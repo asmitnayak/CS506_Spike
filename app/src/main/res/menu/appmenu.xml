@@ -4,4 +4,5 @@
     <item android:title="Account" />
     <item android:title="View Menu" />
     <item android:title="Cart" />
+    <item android:title="Button" />
 </menu>

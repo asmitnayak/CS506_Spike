@@ -17,4 +17,16 @@ public class MenuItem {
         this.itemCost = itemCost;
         this.itemAvailibility = itemAvailibility;
     }
+    public void setItemName(String itemName){
+        this.itemName = itemName;
+    }
+    public void setItemImage(ImageView itemImage){
+        this.menuImage = itemImage;
+    }
+    public void setItemCost(double itemCost){
+        this.itemCost = itemCost;
+    }
+    public void setItemAvailibility(int itemAvailibility){
+        this.itemAvailibility = itemAvailibility;
+    }
 }

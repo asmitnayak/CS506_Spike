@@ -4,14 +4,14 @@ import android.widget.ImageView;
 
 public class MenuItem {
     public String itemName;
-    public ImageView menuImage;
+    public String menuImage;
     public double itemCost;
     public int itemAvailibility;
 
     public MenuItem(){
 
     }
-    public MenuItem(String itemName, ImageView menuImage, double itemCost, int itemAvailibility){
+    public MenuItem(String itemName, String menuImage, double itemCost, int itemAvailibility){
         this.itemName = itemName;
         this.menuImage = menuImage;
         this.itemCost = itemCost;
@@ -20,7 +20,7 @@ public class MenuItem {
     public void setItemName(String itemName){
         this.itemName = itemName;
     }
-    public void setItemImage(ImageView itemImage){
+    public void setItemImage(String itemImage){
         this.menuImage = itemImage;
     }
     public void setItemCost(double itemCost){

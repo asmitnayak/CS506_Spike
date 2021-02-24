@@ -20,8 +20,8 @@ import android.view.View;
 import java.util.ArrayList;
 
 public class CustomerView extends AppCompatActivity {
-    ArrayList<MenuItem> menuItems = new ArrayList<MenuItem>();
-    ArrayAdapter<MenuItem> menuAdapter;
+    ArrayList<RestaurantMenuItem> menuItems = new ArrayList<RestaurantMenuItem>();
+    ArrayAdapter<RestaurantMenuItem> menuAdapter;
     ListView menuList;
 
     @Override
@@ -29,10 +29,10 @@ public class CustomerView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_view);
         menuList = (ListView) findViewById(R.id.menuList);
-        menuAdapter = new ArrayAdapter<MenuItem> (this, android.R.layout.simple_list_item_1, menuItems);
+        menuAdapter = new ArrayAdapter<RestaurantMenuItem> (this, android.R.layout.simple_list_item_1, menuItems);
         menuList.setAdapter(menuAdapter);
         RestaurantMenuItem pasta = new RestaurantMenuItem("Pasta", "@drawable/customer_view_background", 19.99, 9);
-        //menuItems.add();
+        menuItems.add(pasta);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -41,6 +41,8 @@ public class Login extends AppCompatActivity {
         Intent intent = new Intent(this, CustomerView.class);
         startActivity(intent);
     }
-    public void goToRegister(View view) {
+    public void goToCreateAccount(View view) {
+        Intent intent = new Intent(this, CreateAccount.class);
+        startActivity(intent);
     }
 }

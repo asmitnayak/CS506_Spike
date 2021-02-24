@@ -57,7 +57,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/cardview_dark_background"
-        android:onClick="goToRegister"
+        android:onClick="goToCreateAccount"
         android:text="Don't have an account? Join us!"
         android:textAllCaps="false"
         android:textSize="12sp"

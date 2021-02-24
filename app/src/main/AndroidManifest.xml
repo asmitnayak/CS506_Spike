@@ -11,6 +11,7 @@
         android:theme="@style/Theme.CS506_Spike">
         <activity android:name=".CreateAccount"></activity>
         <activity android:name=".CustomerView" />
+        <activity android:name=".Orders" android:label="Orders" android:parentActivityName=".RestaurantStaff"/>
         <activity android:name=".RestaurantStaff" />
         <activity android:name=".Admin" />
         <activity android:name=".Login">

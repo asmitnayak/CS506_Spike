@@ -2,16 +2,16 @@ package com.example.android.cs506_spike;
 
 import android.widget.ImageView;
 
-public class MenuItem {
+public class RestaurantMenuItem {
     public String itemName;
     public String menuImage;
     public double itemCost;
     public int itemAvailibility;
 
-    public MenuItem(){
+    public RestaurantMenuItem(){
 
     }
-    public MenuItem(String itemName, String menuImage, double itemCost, int itemAvailibility){
+    public RestaurantMenuItem(String itemName, String menuImage, double itemCost, int itemAvailibility){
         this.itemName = itemName;
         this.menuImage = menuImage;
         this.itemCost = itemCost;

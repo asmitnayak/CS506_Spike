@@ -31,7 +31,7 @@ public class CustomerView extends AppCompatActivity {
         menuList = (ListView) findViewById(R.id.menuList);
         menuAdapter = new ArrayAdapter<MenuItem> (this, android.R.layout.simple_list_item_1, menuItems);
         menuList.setAdapter(menuAdapter);
-        //MenuItem pasta = new MenuItem("Pasta", "@drawable/customer_view_background", 19.99, 9);
+        RestaurantMenuItem pasta = new RestaurantMenuItem("Pasta", "@drawable/customer_view_background", 19.99, 9);
         //menuItems.add();
     }
     @Override

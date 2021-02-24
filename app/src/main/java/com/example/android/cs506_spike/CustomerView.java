@@ -40,4 +40,9 @@ public class CustomerView extends AppCompatActivity {
         inflater.inflate(R.menu.appmenu, menu);
         return true;
     }
+
+    public void menu(View view) {
+        Intent intent = new Intent(this, MenuView.class);
+        startActivity(intent);
+    }
 }

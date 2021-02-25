@@ -4,16 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#B70B0202"
-    tools:context=".CustomerView" >
-
-    <ListView
-        android:id="@+id/menuList"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="92dp"
-        tools:layout_editor_absoluteY="107dp" />
-
+    android:background="#D00B0303"
+    android:backgroundTint="#C10E0606"
+    tools:context=".AdminModifyMenuList">
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

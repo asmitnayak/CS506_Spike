@@ -15,7 +15,7 @@ public class RestaurantStaff extends AppCompatActivity {
 
     // Redirect the user to Orders.
     public void goToOrders(View view) {
-        // Redirect the user to main screen.
+        // Redirect the user to Orders Screen.
         Intent intent = new Intent(this, Orders.class);
         startActivity(intent);
     }

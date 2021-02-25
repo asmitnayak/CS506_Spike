@@ -19,12 +19,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/Order_Image"
-                android:layout_width="106dp"
-                android:layout_height="82dp"
-                app:srcCompat="@drawable/customer_view_background" />
-
             <TextView
                 android:id="@+id/Order_num"
                 android:layout_width="wrap_content"
@@ -32,13 +26,39 @@
                 android:layout_toRightOf="@id/Order_Image"
                 android:text="Order number:" />
 
+            <LinearLayout
+                android:id="@+id/Food_items"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/Type_of_delivery"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/Food_item1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Food1" />
+
+                <TextView
+                    android:id="@+id/Food_item2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Food2" />
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/Food_names"
+                android:id="@+id/Cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Food_items"
+                android:text="Cost" />
+
+            <TextView
+                android:id="@+id/Type_of_delivery"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/Order_num"
-                android:layout_toRightOf="@id/Order_Image"
-                android:text="Food:" />
+                android:text="Delivery:" />
         </RelativeLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

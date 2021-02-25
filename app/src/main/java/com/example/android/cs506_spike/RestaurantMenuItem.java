@@ -3,15 +3,15 @@ package com.example.android.cs506_spike;
 import android.widget.ImageView;
 
 public class RestaurantMenuItem {
-    public String itemName;
-    public String menuImage;
-    public double itemCost;
-    public int itemAvailibility;
+    private String itemName;
+    private int menuImage;
+    private double itemCost;
+    private int itemAvailibility;
 
     public RestaurantMenuItem(){
 
     }
-    public RestaurantMenuItem(String itemName, String menuImage, double itemCost, int itemAvailibility){
+    public RestaurantMenuItem(String itemName, int menuImage, double itemCost, int itemAvailibility){
         this.itemName = itemName;
         this.menuImage = menuImage;
         this.itemCost = itemCost;
@@ -20,7 +20,7 @@ public class RestaurantMenuItem {
     public void setItemName(String itemName){
         this.itemName = itemName;
     }
-    public void setItemImage(String itemImage){
+    public void setItemImage(int itemImage){
         this.menuImage = itemImage;
     }
     public void setItemCost(double itemCost){
@@ -28,5 +28,20 @@ public class RestaurantMenuItem {
     }
     public void setItemAvailibility(int itemAvailibility){
         this.itemAvailibility = itemAvailibility;
+    }
+
+    public String getItemName(){
+        return this.itemName;
+    }
+    public int getMenuImage(){
+        return this.menuImage;
+    }
+
+    public double getItemCost() {
+        return itemCost;
+    }
+
+    public int getItemAvailibility() {
+        return itemAvailibility;
     }
 }

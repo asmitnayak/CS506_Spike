@@ -28,11 +28,21 @@ public class CustomerView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_view);
+
         menuList = (ListView) findViewById(R.id.menuList);
-        menuAdapter = new ArrayAdapter<RestaurantMenuItem> (this, android.R.layout.simple_list_item_1, menuItems);
-        menuList.setAdapter(menuAdapter);
-        RestaurantMenuItem pasta = new RestaurantMenuItem("Pasta", "@drawable/customer_view_background", 19.99, 9);
-        menuItems.add(pasta);
+        RestaurantMenuItem [] pasta = new RestaurantMenuItem[10];
+        pasta[0] = new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9);
+        pasta[1] = new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9);
+        CustomAdapter customAdp = new CustomAdapter(getApplicationContext(), pasta);
+        menuList.setAdapter(customAdp);
+
+
+
+//        menuList = (ListView) findViewById(R.id.menuList);
+//        menuAdapter = new ArrayAdapter<RestaurantMenuItem> (this, android.R.layout.simple_list_item_1, menuItems);
+//        menuList.setAdapter(menuAdapter);
+//
+//        menuItems.add(pasta);
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

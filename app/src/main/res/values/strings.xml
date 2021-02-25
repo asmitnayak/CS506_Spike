@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CS506_Spike</string>
+    <string name="error_incorrect_password">The username and password is incorrect</string>
 </resources>

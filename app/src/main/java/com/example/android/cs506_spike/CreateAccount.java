@@ -2,16 +2,36 @@ package com.example.android.cs506_spike;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CreateAccount extends AppCompatActivity {
+
+    private File mCreds = null;
+    private File master = null;
+    protected static final ArrayList<String> CREDENTIALS = new ArrayList<>();
+    private FileWriter writer = null;
+    private FileReader reader = null;
+    private EditText mUsernameView;
+    private EditText mPasswordView;
+    private EditText mPasswordConfView;
+    private Spinner mRoleSpinner;
+    private UserLoginTask mAuthTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +56,174 @@ public class CreateAccount extends AppCompatActivity {
 
             }
         });
+
+
+        final File folder = getFilesDir();
+        File file = new File(folder, "cs506_spike");
+        if(!file.exists())
+            file.mkdir();
+
+        master = file;
+        mCreds = new File(file, "credentials");
+        mAuthTask = new UserLoginTask();
+        mUsernameView = findViewById(R.id.usernameInput);
+        mPasswordView = findViewById(R.id.passwordInput);
+        mPasswordConfView = findViewById(R.id.passwordInputConfirm);
+        mRoleSpinner = spinner;
+
+        Button mRegisterButton = (Button) findViewById(R.id.registerLink);
+        mRegisterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    if (mAuthTask.write_credentials())
+                        // TODO: go to login this line is error generating
+                        if (mRoleSpinner.getSelectedItem().toString().equalsIgnoreCase("Customer")){
+                            goToCustomer();
+                        }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
+
+    public void goToCustomer(){
+        Intent intent = new Intent(this, CustomerView.class);
+        startActivity(intent);
     }
 
     public void goToPage(View view) {
     }
+
+    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
+
+        private String mUser;
+        private String mPassword;
+
+        UserLoginTask(String user, String password) {
+            mUser = user;
+            mPassword = password;
+        }
+        UserLoginTask() {
+            mUser = "";
+            mPassword = "";
+            try {
+                writer = new FileWriter(mCreds, true);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                reader = new FileReader(mCreds);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                read_credentials();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        void setUsernamePassword(String user, String pass){
+            mUser = user;
+            mPassword = pass;
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... params) {
+            try {
+                // Simulate network access.
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                return false;
+            }
+
+            if(CREDENTIALS.isEmpty())
+                return false;
+
+            for (String credential : CREDENTIALS) {
+                String[] pieces = credential.split(":");
+                if (pieces[0].equals(mUser)) {
+                    // Account exists, return true if the password matches.
+                    return pieces[1].equals(mPassword);
+                }
+            }
+
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(final Boolean success) {
+            mAuthTask = null;
+
+            if (success) {
+                finish();
+            } else {
+                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                mPasswordView.requestFocus();
+            }
+        }
+
+        @Override
+        protected void onCancelled() {
+            mAuthTask = null;
+        }
+
+        public ArrayList<String> read_credentials() throws IOException {
+
+            int length = (int) mCreds.length();
+
+            byte[] bytes = new byte[length];
+
+            FileInputStream in = new FileInputStream(mCreds);
+            try {
+                in.read(bytes);
+            } finally {
+                in.close();
+            }
+
+            String contents = new String(bytes);
+
+            String array[] = contents.split("\n");
+            for(String s : array)
+                CREDENTIALS.add(s);
+
+            return CREDENTIALS;
+        }
+
+        private boolean write_credentials() throws IOException {
+            boolean success;
+
+            if(CREDENTIALS.contains(mUsernameView.getText().toString())){
+                mUsernameView.setError("The username already exists");
+                return false;
+            }
+
+            FileOutputStream stream = new FileOutputStream(mCreds, true);
+            String str = mUsernameView.getText().toString().trim() + ":" + mPasswordView.getText().toString().trim() +
+                    ":" + mRoleSpinner.getSelectedItem().toString();
+            if(str.equals("::"))
+                return false;
+            try {
+                stream.write((str + "\n").getBytes());
+                success = true;
+                CREDENTIALS.add(str);
+            } catch(Exception e){
+                success = false;
+            } finally {
+                stream.close();
+            }
+
+            File f = new File(master, mUsernameView.getText().toString());
+            f.mkdir();
+
+            return success;
+        }
+    }
+
 }

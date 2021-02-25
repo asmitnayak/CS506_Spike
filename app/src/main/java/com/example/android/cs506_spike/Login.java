@@ -3,12 +3,23 @@ package com.example.android.cs506_spike;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class Login extends AppCompatActivity {
+
+    private File mCreds = null;
+    protected static final ArrayList<String> LOGINCREDENTIALS = new ArrayList<>();
+    private String mRole = "";
+    private Authorization auth = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +43,12 @@ public class Login extends AppCompatActivity {
     }
     public void check(final String username, final String password) {
         //some checking credentials here
-        goToCustomerView(username);
+        auth = new Authorization(username, password);
+        if (auth.doInBackground()){
+            // login based on role
+            if(mRole.equalsIgnoreCase("Customer"))
+                goToCustomerView(username);
+        }
 
     }
     // Redirect the user to main screen.
@@ -44,5 +60,72 @@ public class Login extends AppCompatActivity {
     public void goToCreateAccount(View view) {
         Intent intent = new Intent(this, CreateAccount.class);
         startActivity(intent);
+    }
+
+    public class Authorization extends AsyncTask<Void, Void, Boolean> {
+
+        private String mUser = "";
+        private String mPassword = "";
+        Authorization(String uName, String pass){
+
+            mUser = uName;
+            mPassword = pass;
+
+            final File folder = getFilesDir();
+            File file = new File(folder, "cs506_spike");
+            if(!file.exists())
+                file.mkdir();
+            mCreds = new File(file, "credentials");
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            try {
+                // Simulate network access.
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                return false;
+            }
+
+            if(LOGINCREDENTIALS.isEmpty())
+                return false;
+
+            for (String credential : LOGINCREDENTIALS) {
+                String[] pieces = credential.split(":");
+                if (pieces[0].equals(mUser)) {
+                    // Account exists, return true if the password matches.
+                    if (pieces[1].equals(mPassword)){
+                        mRole = pieces[2];
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+            }
+
+            return false;
+        }
+
+        public ArrayList<String> read_credentials() throws IOException {
+
+            int length = (int) mCreds.length();
+
+            byte[] bytes = new byte[length];
+
+            FileInputStream in = new FileInputStream(mCreds);
+            try {
+                in.read(bytes);
+            } finally {
+                in.close();
+            }
+
+            String contents = new String(bytes);
+
+            String array[] = contents.split("\n");
+            for(String s : array)
+                LOGINCREDENTIALS.add(s);
+
+            return LOGINCREDENTIALS;
+        }
     }
 }

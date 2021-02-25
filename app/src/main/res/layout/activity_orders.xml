@@ -5,59 +5,111 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <RelativeLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/Order_num"
+                android:id="@+id/Order_Num_Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Order number:" />
+                android:layout_marginStart="4dp"
+                android:text="Order Number: "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/Deliver_Type_Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Delivery: "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Order_Num_Title" />
 
             <LinearLayout
-                android:id="@+id/Food_items"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/Type_of_delivery"
-                android:orientation="vertical">
+                android:id="@+id/Food_Items"
+                android:layout_width="297dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.035"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Deliver_Type_Title">
 
                 <TextView
-                    android:id="@+id/Food_item1"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/Food1"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Food1" />
 
                 <TextView
-                    android:id="@+id/Food_item2"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/Food2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Food2" />
             </LinearLayout>
 
             <TextView
-                android:id="@+id/Cost"
+                android:id="@+id/Cost_Title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Food_items"
-                android:text="Cost" />
+                android:text="Cost: "
+                app:layout_constraintStart_toEndOf="@+id/Delivery_Type"
+                app:layout_constraintTop_toBottomOf="@+id/Order_Num" />
+
+            <Button
+                android:id="@+id/Order_Done_Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="Finished"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Food_Items"
+                app:layout_constraintVertical_bias="0.238" />
 
             <TextView
-                android:id="@+id/Type_of_delivery"
-                android:layout_width="wrap_content"
+                android:id="@+id/Order_Num"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/Order_num"
-                android:text="Delivery:" />
-        </RelativeLayout>
-    </ScrollView>
+                android:text="_____________"
+                app:layout_constraintBottom_toTopOf="@+id/Cost"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/Order_Num_Title"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/Delivery_Type"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:text="Takeout"
+                app:layout_constraintBottom_toTopOf="@+id/Food_Items"
+                app:layout_constraintStart_toEndOf="@+id/Deliver_Type_Title"
+                app:layout_constraintTop_toTopOf="@+id/Cost_Title"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/Cost"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="____________"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/Cost_Title"
+                tools:layout_editor_absoluteY="19dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

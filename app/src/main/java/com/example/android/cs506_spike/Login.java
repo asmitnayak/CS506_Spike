@@ -44,6 +44,7 @@ public class Login extends AppCompatActivity {
     public void check(final String username, final String password) {
         //some checking credentials here
         auth = new Authorization(username, password);
+        System.out.println("here");
         if (auth.doInBackground()){
             // login based on role
             if(mRole.equalsIgnoreCase("Customer"))
@@ -76,17 +77,15 @@ public class Login extends AppCompatActivity {
             if(!file.exists())
                 file.mkdir();
             mCreds = new File(file, "credentials");
+            try{
+                read_credentials();
+            }catch (IOException ioe){
+                // do nothing
+            }
         }
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
-
             if(LOGINCREDENTIALS.isEmpty())
                 return false;
 

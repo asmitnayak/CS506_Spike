@@ -39,6 +39,6 @@
         android:layout_marginLeft="0dp"
         android:layout_marginBottom="-29dp"
         android:layout_toRightOf="@+id/imageView2"
-        android:text="Availible:" />
+        android:text="Available:" />
 
 </RelativeLayout>

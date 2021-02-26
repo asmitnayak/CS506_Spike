@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import java.io.File;
 
-public class AdminAddItem extends CustomerView {
+public class AdminAddItem extends AdminModifyMenuList {
 
     private File master = null;
     private File mMenuList = null;
@@ -32,7 +32,7 @@ public class AdminAddItem extends CustomerView {
     }
 
     public void returnToAdminPage(View view) {
-
+        System.out.println("/n/n running return to admin page /n");
         EditText nameIn = findViewById(R.id.menuName);
         String name = nameIn.getText().toString();
 
@@ -62,7 +62,6 @@ public class AdminAddItem extends CustomerView {
             Toast.makeText(Login.this, "Invalid input. Please try again!", Toast.LENGTH_LONG).show();
         }*/
     }
-
 
 //    public class MenuItemAdd extends AsyncTask<String, Void, Void>{
 //

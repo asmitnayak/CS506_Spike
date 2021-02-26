@@ -25,43 +25,35 @@ import java.util.ArrayList;
 public class CustomerView extends AppCompatActivity {
     ArrayList<RestaurantMenuItem> menuItems = new ArrayList<RestaurantMenuItem>();
     ArrayAdapter<RestaurantMenuItem> menuAdapter;
+    CustomAdapter customAdp;
     ListView menuList;
-    RestaurantMenuItem [] pasta;
+    ArrayList<RestaurantMenuItem> foodItems;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_view);
 
         menuList = (ListView) findViewById(R.id.menuList);
-        pasta = new RestaurantMenuItem[10];
-        pasta[0] = new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9);
-        pasta[1] = new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9);
-        CustomAdapter customAdp = new CustomAdapter(getApplicationContext(), pasta);
+        foodItems = new ArrayList<RestaurantMenuItem>();
+        foodItems.add(new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9));
+
+        for(int i = 0; i < 10; i++)
+            foodItems.add(new RestaurantMenuItem("Pasta"+i, R.drawable.customer_view_background, 23.29, 6));
+        customAdp = new CustomAdapter(getApplicationContext(), foodItems);
         menuList.setAdapter(customAdp);
 
-
+//
 
 //        menuList = (ListView) findViewById(R.id.menuList);
 //        menuAdapter = new ArrayAdapter<RestaurantMenuItem> (this, android.R.layout.simple_list_item_1, menuItems);
 //        menuList.setAdapter(menuAdapter);
 //
-//        menuItems.add(pasta);
+//        menuItems.add(foodItems);
     }
 
-    public void addMenuItem(String name, int cost, int availability){
-        int i;
-        for(i = 0; i < 10; i++){
-            if(pasta[i] == null){
-                break;
-            }
-        }
-
-        if(i == 9){
-            System.out.println("The menu is full! Cannot add any more items.");
-        }
-        else{
-            pasta[i] = new RestaurantMenuItem(name, R.drawable.customer_view_background, cost, availability);
-        }
+    public void onToCartClick(View view){
+        Intent intent = new Intent(this, Cart.class);
+        startActivity(intent);
     }
 
     @Override

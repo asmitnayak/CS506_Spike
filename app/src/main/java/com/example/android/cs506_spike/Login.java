@@ -14,6 +14,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static com.example.android.cs506_spike.CreateAccount.accountDetails;
+
 public class Login extends AppCompatActivity {
 
     private File mCreds = null;
@@ -28,7 +30,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void login(View view) {
-        EditText usernameIn = findViewById(R.id.usernameInput);
+        EditText usernameIn = findViewById(R.id.carDescription);
         String username = usernameIn.getText().toString();
         EditText passwordIn = findViewById(R.id.passwordInput);
         String password = passwordIn.getText().toString();
@@ -113,6 +115,8 @@ public class Login extends AppCompatActivity {
                 if (pieces[0].equals(mUser)) {
                     // Account exists, return true if the password matches.
                     if (pieces[1].equals(mPassword)){
+                        for(int i = 0; i < 5; i++)
+                            accountDetails[i] = pieces[i];
                         mRole = pieces[2];
                         return true;
                     }

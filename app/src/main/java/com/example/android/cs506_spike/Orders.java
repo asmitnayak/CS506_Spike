@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class Orders extends AppCompatActivity {
     ArrayList<RestaurantOrder> orders = new ArrayList<RestaurantOrder>();
-    //ArrayAdapter<RestaurantOrder> ordersAdapter;
     RecyclerView ordersList;
 
     @Override
@@ -23,10 +22,10 @@ public class Orders extends AppCompatActivity {
 
         ordersList = (RecyclerView) findViewById(R.id.ordersList);
         ArrayList<RestaurantOrder> pastaOrder = new ArrayList<RestaurantOrder>();
-        ArrayList<RestaurantMenuItem> pasta = new ArrayList<RestaurantMenuItem>();
-        pasta.add(new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9));
-        pastaOrder.add(new RestaurantOrder(1, "Dine In", pasta, 19.99));
-        pastaOrder.add(new RestaurantOrder(1, "Dine In", pasta, 19.99));
+        ArrayList<RestaurantMenuItem> orderItems = new ArrayList<RestaurantMenuItem>();
+        orderItems.add(new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9));
+        pastaOrder.add(new RestaurantOrder(1, "Dine In", orderItems, 19.99));
+        pastaOrder.add(new RestaurantOrder(2, "Take Out", orderItems, 8.99));
         OrderAdapter orderAdp = new OrderAdapter(this, pastaOrder);
         ordersList.setAdapter(orderAdp);
         ordersList.setLayoutManager(new LinearLayoutManager(this));

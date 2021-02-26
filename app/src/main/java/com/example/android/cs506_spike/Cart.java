@@ -26,12 +26,18 @@ public class Cart extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.back) {
             goToMenu();
+        }else if(item.getItemId() == R.id.checkout){
+            goToCheckout();
         }
 
         return super.onOptionsItemSelected(item);
     }
     public void goToMenu(){
         Intent intent = new Intent(this, CustomerView.class);
+        startActivity(intent);
+    }
+    public void goToCheckout(){
+        Intent intent = new Intent(this, Checkout.class);
         startActivity(intent);
     }
 }

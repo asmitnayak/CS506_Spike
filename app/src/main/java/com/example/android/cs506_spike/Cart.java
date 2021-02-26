@@ -19,7 +19,7 @@ public class Cart extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.appmenu, menu);
+        inflater.inflate(R.menu.back, menu);
         return true;
     }
     @Override

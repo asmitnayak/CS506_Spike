@@ -22,6 +22,8 @@
         <activity android:name=".RestaurantStaff" />
         <activity android:name=".Admin" />
         <activity android:name=".Login"/>
+        <activity android:name=".Cart"/>
+        <activity android:name=".CustomerAccount"/>
 
     </application>
 

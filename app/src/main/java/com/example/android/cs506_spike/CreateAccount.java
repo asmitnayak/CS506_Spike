@@ -35,6 +35,8 @@ public class CreateAccount extends AppCompatActivity {
     private Spinner mRoleSpinner;
     private UserLoginTask mAuthTask;
 
+    public static String[] accountDetails;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,7 +121,6 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
         private String mUser;
         private String mPassword;
 
@@ -170,7 +171,9 @@ public class CreateAccount extends AppCompatActivity {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mUser)) {
                     // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
+                    if (pieces[1].equals(mPassword))
+                        accountDetails = pieces;
+                    return  pieces[1].equals(mPassword);
                 }
             }
 

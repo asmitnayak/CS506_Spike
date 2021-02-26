@@ -7,6 +7,8 @@ public class RestaurantMenuItem {
     private int menuImage;
     private double itemCost;
     private int itemAvailibility;
+    private int itemChoosen;
+    private boolean isChecked;
 
     public RestaurantMenuItem(){
 
@@ -16,6 +18,8 @@ public class RestaurantMenuItem {
         this.menuImage = menuImage;
         this.itemCost = itemCost;
         this.itemAvailibility = itemAvailibility;
+        this.itemChoosen = 0;
+        this.isChecked = false;
     }
     public void setItemName(String itemName){
         this.itemName = itemName;
@@ -29,12 +33,25 @@ public class RestaurantMenuItem {
     public void setItemAvailibility(int itemAvailibility){
         this.itemAvailibility = itemAvailibility;
     }
+    public void setItemChoosen(int items){
+        this.itemChoosen = items;
+    }
+    public void setIsChecked(boolean select){
+        this.isChecked = select;
+    }
 
     public String getItemName(){
         return this.itemName;
     }
     public int getMenuImage(){
         return this.menuImage;
+    }
+    public int getItemChoosen(){
+        return this.itemChoosen;
+    }
+
+    public boolean getIsChecked() {
+        return isChecked;
     }
 
     public double getItemCost() {

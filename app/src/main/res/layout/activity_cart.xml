@@ -8,6 +8,16 @@
     android:backgroundTint="#B70B0202"
     tools:context=".Cart">
 
+    <Button
+        android:id="@+id/checkoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="Checkout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ListView
         android:id="@+id/orders"
         android:layout_width="399dp"

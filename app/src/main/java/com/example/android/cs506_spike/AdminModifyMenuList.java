@@ -39,7 +39,8 @@ public class AdminModifyMenuList extends AppCompatActivity {
 
         menuId = (ListView) findViewById(R.id.menuId);
 
-        if(first == false) {
+        // TODO: CHANGE TO ARRAYLIST
+        /*if(first == false) {
             pasta[0] = new RestaurantMenuItem("Pasta1", R.drawable.customer_view_background, 19.99, 9);
             pasta[1] = new RestaurantMenuItem("Pasta2", R.drawable.customer_view_background, 19.99, 9);
             first = true;
@@ -53,6 +54,7 @@ public class AdminModifyMenuList extends AppCompatActivity {
 
         CustomAdapter customAdp = new CustomAdapter(getApplicationContext(), pasta);
         menuId.setAdapter(customAdp);
+        */
 
 
 

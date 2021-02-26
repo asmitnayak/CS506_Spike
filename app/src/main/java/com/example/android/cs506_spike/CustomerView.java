@@ -51,7 +51,10 @@ public class CustomerView extends AppCompatActivity {
 //        menuItems.add(foodItems);
     }
 
-
+    public void onToCartClick(View view){
+        Intent intent = new Intent(this, Cart.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

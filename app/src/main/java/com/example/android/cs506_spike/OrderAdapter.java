@@ -1,6 +1,5 @@
 package com.example.android.cs506_spike;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -35,12 +33,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
-        holder.orderNumTitle.setText("Order Number:");
-        holder.orderNum.setText(Integer.toString(ordersData.get(position).getOrderNumber()));
-        holder.deliveryTitle.setText("Delivery: ");
-        holder.delivery.setText(ordersData.get(position).getDeliveryType());
-        holder.costTitle.setText("Cost: ");
-        holder.cost.setText(Double.toString(ordersData.get(position).getCost()));
+        holder.orderNum.setText("Order Number: " + Integer.toString(ordersData.get(position).getOrderNumber()));
+        holder.delivery.setText("Delivery: " + ordersData.get(position).getDeliveryType());
+        holder.cost.setText("Total Cost: " + Double.toString(ordersData.get(position).getCost()));
         holder.food1.setText("Food1");
         holder.food2.setText("Food2");
     }
@@ -55,24 +50,19 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     }
 
     public class OrderViewHolder extends RecyclerView.ViewHolder{
-        TextView orderNumTitle, orderNum, deliveryTitle, delivery, costTitle, cost, food1, food2;
+        TextView orderNum, delivery, cost, food1, food2;
         LinearLayout ordersLayout;
-        Button finishedButton;
         RelativeLayout viewF,viewB;
 
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
             //typecast
-            orderNumTitle = itemView.findViewById(R.id.Order_Num_Title);
             orderNum = itemView.findViewById(R.id.Order_Num);
-            deliveryTitle = itemView.findViewById(R.id.Deliver_Type_Title);
-            delivery = itemView.findViewById(R.id.Delivery_Type);
-            costTitle = itemView.findViewById(R.id.Cost_Title);
-            cost = itemView.findViewById(R.id.Order_Cost);
+            delivery = itemView.findViewById(R.id.Deliver_Type);
+            cost = itemView.findViewById(R.id.Cost);
             ordersLayout = itemView.findViewById(R.id.Food_Items);
             food1 = itemView.findViewById(R.id.Food1);
             food2 = itemView.findViewById(R.id.Food2);
-            finishedButton = itemView.findViewById(R.id.Order_Done_Button);
             viewF = itemView.findViewById(R.id.view_Foreground);
             viewB = itemView.findViewById(R.id.view_background);
         }

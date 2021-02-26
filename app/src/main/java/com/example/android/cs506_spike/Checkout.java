@@ -38,8 +38,6 @@ public class Checkout extends AppCompatActivity {
     }
 
     public void onCheckoutClicked(View view) {
-        PdfDocument document = new PdfDocument();
-//        document.writeTo(getOutputStream())
         Intent intent = new Intent(this, PickupTime.class);
         startActivity(intent);
     }

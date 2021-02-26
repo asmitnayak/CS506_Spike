@@ -1,7 +1,6 @@
 package com.example.android.cs506_spike;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +16,11 @@ import java.util.Locale;
 
 public class CustomAdapter extends BaseAdapter {
     Context context;
-    RestaurantMenuItem []food;
-    public static ArrayList<RestaurantMenuItem> selectedStrings = new ArrayList<RestaurantMenuItem>();
+    ArrayList<RestaurantMenuItem> food;
+    public static ArrayList<RestaurantMenuItem> selectedFood = new ArrayList<RestaurantMenuItem>();
     LayoutInflater inflter;
 
-    public CustomAdapter(Context applicationContext, RestaurantMenuItem [] food) {
+    public CustomAdapter(Context applicationContext, ArrayList<RestaurantMenuItem> food) {
         this.context = context;
         this.food = food;
         inflter = (LayoutInflater.from(applicationContext));
@@ -29,7 +28,7 @@ public class CustomAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return food.size();
     }
 
     @Override
@@ -47,30 +46,26 @@ public class CustomAdapter extends BaseAdapter {
         view = inflter.inflate(R.layout.menu_list_view_layout, null);
 
         TextView nameV = (TextView) view.findViewById(R.id.nameView);
-        nameV.setText(food[i].getItemName());
+        nameV.setText(food.get(i).getItemName());
         ImageView img = (ImageView) view.findViewById(R.id.imageView2);
-        img.setImageResource(food[i].getMenuImage());
+        img.setImageResource(food.get(i).getMenuImage());
         TextView costV = (TextView) view.findViewById(R.id.costView);
-        costV.setText(String.format(Locale.getDefault(),"%f",food[i].getItemCost()));
+        costV.setText(String.format(Locale.getDefault(),"%f",food.get(i).getItemCost()));
         TextView availV = (TextView) view.findViewById(R.id.AvailibilityView);
-        availV.setText(String.format(Locale.getDefault(),"%d",food[i].getItemAvailibility()));
+        availV.setText(String.format(Locale.getDefault(),"%d",food.get(i).getItemAvailibility()));
 
         CheckBox cb = (CheckBox) view.findViewById(R.id.foodSelect);
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
-                    selectedStrings.add(food[i]);
+                    selectedFood.add(food.get(i));
                 }else{
-                    selectedStrings.remove(food[i]);
+                    selectedFood.remove(food.get(i));
                 }
             }
         });
 
         return view;
-    }
-
-    public ArrayList<RestaurantMenuItem> getSelectedStrings(){
-        return this.selectedStrings;
     }
 }

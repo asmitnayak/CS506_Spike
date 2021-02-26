@@ -1,5 +1,6 @@
 package com.example.android.cs506_spike;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import android.os.Bundle;
 import android.view.View;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class CustomerView extends AppCompatActivity {
@@ -50,9 +53,45 @@ public class CustomerView extends AppCompatActivity {
         inflater.inflate(R.menu.appmenu, menu);
         return true;
     }
+//    public ArrayList<String> read_credentials() throws IOException {
+//
+//        int length = (int) mCreds.length();
+//
+//        byte[] bytes = new byte[length];
+//
+//        FileInputStream in = new FileInputStream(mCreds);
+//        try {
+//            in.read(bytes);
+//        } finally {
+//            in.close();
+//        }
+//
+//        String contents = new String(bytes);
+//
+//        String array[] = contents.split("\n");
+//        for(String s : array)
+//            CREDENTIALS.add(s);
+//
+//        return CREDENTIALS;
+//    }
 
-    public void menu(View view) {
-        Intent intent = new Intent(this, MenuView.class);
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.customerCart) {
+            goToCart();
+        }else if (item.getItemId() == R.id.customerAccount){
+            goToAccount();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+    public void goToCart(){
+        Intent intent = new Intent(this, Cart.class);
         startActivity(intent);
     }
+    public void goToAccount(){
+        Intent intent = new Intent(this, CustomerAccount.class);
+        startActivity(intent);
+    }
+
 }

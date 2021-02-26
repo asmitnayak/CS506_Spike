@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Account" />
-    <item android:title="View Menu" />
-    <item android:title="Cart" />
-    <item android:title="Lucas" />
+    <item
+        android:id="@+id/customerAccount"
+        android:title="Account" />
+    <item
+        android:id="@+id/customerCart"
+        android:title="Cart" />
 </menu>

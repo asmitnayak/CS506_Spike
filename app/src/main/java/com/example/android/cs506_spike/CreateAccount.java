@@ -30,8 +30,12 @@ public class CreateAccount extends AppCompatActivity {
     private EditText mUsernameView;
     private EditText mPasswordView;
     private EditText mPasswordConfView;
+    private EditText mAddressView;
+    private EditText mPhoneNumberView;
     private Spinner mRoleSpinner;
     private UserLoginTask mAuthTask;
+
+    public static String[] accountDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +73,8 @@ public class CreateAccount extends AppCompatActivity {
         mUsernameView = findViewById(R.id.usernameInput);
         mPasswordView = findViewById(R.id.passwordInput);
         mPasswordConfView = findViewById(R.id.passwordInputConfirm);
+        mAddressView = findViewById(R.id.address);
+        mPhoneNumberView = findViewById(R.id.phoneNumber);
         mRoleSpinner = spinner;
 
         Button mRegisterButton = (Button) findViewById(R.id.registerLink);
@@ -80,6 +86,12 @@ public class CreateAccount extends AppCompatActivity {
                         // TODO: go to login this line is error generating
                         if (mRoleSpinner.getSelectedItem().toString().equalsIgnoreCase("Customer")){
                             goToCustomer();
+                        }
+                        else if (mRoleSpinner.getSelectedItem().toString().equalsIgnoreCase("Staff")){
+                            goToStaff();
+                        }
+                        else if (mRoleSpinner.getSelectedItem().toString().equalsIgnoreCase("Admin")){
+                            goToAdmin();
                         }
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -95,11 +107,20 @@ public class CreateAccount extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToStaff(){
+        //Intent intent = new Intent(this, CustomerView.class);
+        //startActivity(intent);
+    }
+
+    public void goToAdmin(){
+        Intent intent = new Intent(this, Admin.class);
+        startActivity(intent);
+    }
+
     public void goToPage(View view) {
     }
 
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
         private String mUser;
         private String mPassword;
 
@@ -150,7 +171,9 @@ public class CreateAccount extends AppCompatActivity {
                 String[] pieces = credential.split(":");
                 if (pieces[0].equals(mUser)) {
                     // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
+                    if (pieces[1].equals(mPassword))
+                        accountDetails = pieces;
+                    return  pieces[1].equals(mPassword);
                 }
             }
 
@@ -206,7 +229,8 @@ public class CreateAccount extends AppCompatActivity {
 
             FileOutputStream stream = new FileOutputStream(mCreds, true);
             String str = mUsernameView.getText().toString().trim() + ":" + mPasswordView.getText().toString().trim() +
-                    ":" + mRoleSpinner.getSelectedItem().toString();
+                    ":" + mRoleSpinner.getSelectedItem().toString() + ":" + mAddressView.getText().toString().trim()
+                    + ":" + mPhoneNumberView.getText().toString().trim();
             if(str.equals("::"))
                 return false;
             try {

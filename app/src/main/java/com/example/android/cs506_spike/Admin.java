@@ -1,9 +1,11 @@
 package com.example.android.cs506_spike;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 public class Admin extends AppCompatActivity {
@@ -17,36 +19,24 @@ public class Admin extends AppCompatActivity {
     public void adminAddItem(View view) {
         Intent intent = new Intent(this, AdminAddItem.class);
         startActivity(intent);
-        /*
-        EditText usernameIn = findViewById(R.id.usernameInput);
-        String username = usernameIn.getText().toString();
-        EditText passwordIn = findViewById(R.id.passwordInput);
-        String password = passwordIn.getText().toString();
-
-        // Check for valid input.
-        if (username != null && !username.equals("") && password != null && !password.equals("")) {
-            // Check if login credentials matches.
-            check(username, password);
-        } else {
-            Toast.makeText(Login.this, "Invalid input. Please try again!", Toast.LENGTH_LONG).show();
-        }*/
     }
 
     public void adminModifyMenu(View view) {
         Intent intent = new Intent(this, AdminModifyMenuList.class);
         startActivity(intent);
-        /*
-        EditText usernameIn = findViewById(R.id.usernameInput);
-        String username = usernameIn.getText().toString();
-        EditText passwordIn = findViewById(R.id.passwordInput);
-        String password = passwordIn.getText().toString();
+    }
 
-        // Check for valid input.
-        if (username != null && !username.equals("") && password != null && !password.equals("")) {
-            // Check if login credentials matches.
-            check(username, password);
-        } else {
-            Toast.makeText(Login.this, "Invalid input. Please try again!", Toast.LENGTH_LONG).show();
-        }*/
+    public void usageReports(View view){
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        goToAccount();
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void goToAccount(){
+        Intent intent = new Intent(this, CustomerAccount.class);
+        startActivity(intent);
     }
 }

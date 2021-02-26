@@ -8,93 +8,91 @@
     android:backgroundTint="#B70B0202"
     tools:context=".Checkout">
 
-    <CheckBox
-        android:id="@+id/checkbox_apple_pay"
-        android:layout_width="267dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="82dp"
-        android:layout_marginEnd="106dp"
-        android:onClick="onCheckboxClicked"
-        android:text="Apple Pay"
-        android:textColor="#64FFDA"
-        android:textSize="24sp"
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="321dp"
+        android:layout_height="257dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="45dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkoutHeading" />
+        app:layout_constraintTop_toBottomOf="@+id/checkoutHeading">
 
-    <CheckBox
-        android:id="@+id/checkbox_paypal"
-        android:layout_width="267dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="106dp"
-        android:onClick="onCheckboxClicked"
-        android:text="PayPal"
-        android:textColor="#64FFDA"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox_apple_pay" />
 
-    <CheckBox
-        android:id="@+id/checkbox_stripe"
-        android:layout_width="267dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="38dp"
-        android:layout_marginTop="31dp"
-        android:layout_marginEnd="106dp"
-        android:onClick="onCheckboxClicked"
-        android:text="Stripe"
-        android:textColor="#64FFDA"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox_paypal" />
+        <RadioButton
+            android:id="@+id/applePay"
+            android:layout_width="301dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:onClick="onRadioButtonClicked"
+            android:text="Apple Pay"
+            android:textColor="#64FFDA"
+            android:textSize="30sp" />
+
+        <RadioButton
+            android:id="@+id/paypal"
+            android:layout_width="316dp"
+            android:layout_height="106dp"
+            android:layout_weight="1"
+            android:onClick="onRadioButtonClicked"
+            android:text="PayPal"
+            android:textColor="#64FFDA"
+            android:textSize="30sp" />
+
+        <RadioButton
+            android:id="@+id/stripe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="onRadioButtonClicked"
+            android:text="Stripe"
+            android:textColor="#64FFDA"
+            android:textSize="30sp" />
+
+    </RadioGroup>
 
     <TextView
         android:id="@+id/checkoutHeading"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="88dp"
+        android:layout_marginTop="35dp"
         android:layout_marginEnd="89dp"
         android:text="Welcome to Checkout"
         android:textColor="#64FFDA"
-        android:textSize="24sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="36dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/carDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="11dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginEnd="89dp"
         android:ems="10"
         android:hint="Car Description"
         android:textColor="#64FFDA"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/payment_checkout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox_stripe" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
     <Button
         android:id="@+id/payment_checkout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="149dp"
-        android:layout_marginTop="83dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="149dp"
         android:backgroundTint="#64FFDA"
         android:onClick="onCheckoutClicked"
         android:text="Checkout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkbox_stripe" />
+        app:layout_constraintTop_toBottomOf="@+id/carDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

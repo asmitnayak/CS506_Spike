@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioButton;
 
 public class Checkout extends AppCompatActivity {
 
@@ -14,8 +15,25 @@ public class Checkout extends AppCompatActivity {
         setContentView(R.layout.activity_checkout);
     }
 
-    public void onCheckboxClicked(View view) {
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
 
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.applePay:
+                if (checked)
+
+                    break;
+            case R.id.paypal:
+                if (checked)
+
+                    break;
+            case R.id.stripe:
+                if (checked)
+
+                    break;
+        }
     }
 
     public void onCheckoutClicked(View view) {

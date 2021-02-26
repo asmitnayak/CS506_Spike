@@ -19,7 +19,7 @@
         android:textColor="#64FFDA"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/passwordHolder"
-        app:layout_constraintEnd_toEndOf="@+id/heading"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

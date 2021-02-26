@@ -11,16 +11,61 @@
     <TextView
         android:id="@+id/username"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="59dp"
         android:layout_marginEnd="260dp"
+        android:layout_marginBottom="27dp"
         android:text="Username:"
         android:textColor="#64FFDA"
         android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/passwordHolder"
+        app:layout_constraintEnd_toEndOf="@+id/heading"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/passwordHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="262dp"
+        android:text="Password:"
+        android:textColor="#64FFDA"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heading" />
+        app:layout_constraintTop_toBottomOf="@+id/username" />
+
+    <TextView
+        android:id="@+id/addressHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="262dp"
+        android:text="Address:"
+        android:textColor="#64FFDA"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordHolder" />
+
+    <TextView
+        android:id="@+id/phoneHolder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="37dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="262dp"
+        android:text="Phone:"
+        android:textColor="#64FFDA"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressHolder" />
 
     <TextView
         android:id="@+id/heading"
@@ -33,28 +78,30 @@
         android:textSize="36sp"
         app:layout_constraintBottom_toTopOf="@+id/username"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/paymentTyple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="37dp"
-        android:layout_marginTop="69dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="217dp"
         android:text="Payment Type:"
         android:textColor="#64FFDA"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/heading"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneHolder" />
 
     <Button
         android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="160dp"
-        android:layout_marginTop="157dp"
+        android:layout_marginTop="158dp"
         android:layout_marginEnd="158dp"
         android:backgroundTint="#64FFDA"
         android:text="Logout"

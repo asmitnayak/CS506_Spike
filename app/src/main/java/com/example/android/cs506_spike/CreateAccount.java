@@ -30,6 +30,8 @@ public class CreateAccount extends AppCompatActivity {
     private EditText mUsernameView;
     private EditText mPasswordView;
     private EditText mPasswordConfView;
+    private EditText mAddressView;
+    private EditText mPhoneNumberView;
     private Spinner mRoleSpinner;
     private UserLoginTask mAuthTask;
 
@@ -69,6 +71,8 @@ public class CreateAccount extends AppCompatActivity {
         mUsernameView = findViewById(R.id.usernameInput);
         mPasswordView = findViewById(R.id.passwordInput);
         mPasswordConfView = findViewById(R.id.passwordInputConfirm);
+        mAddressView = findViewById(R.id.address);
+        mPhoneNumberView = findViewById(R.id.phoneNumber);
         mRoleSpinner = spinner;
 
         Button mRegisterButton = (Button) findViewById(R.id.registerLink);
@@ -206,7 +210,8 @@ public class CreateAccount extends AppCompatActivity {
 
             FileOutputStream stream = new FileOutputStream(mCreds, true);
             String str = mUsernameView.getText().toString().trim() + ":" + mPasswordView.getText().toString().trim() +
-                    ":" + mRoleSpinner.getSelectedItem().toString();
+                    ":" + mRoleSpinner.getSelectedItem().toString() + ":" + mAddressView.getText().toString().trim()
+                    + ":" + mPhoneNumberView.getText().toString().trim();
             if(str.equals("::"))
                 return false;
             try {

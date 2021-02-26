@@ -10,18 +10,31 @@
 
     <TextView
         android:id="@+id/pickUpDescription"
-        android:layout_width="306dp"
-        android:layout_height="279dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="184dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="268dp"
+        android:layout_width="318dp"
+        android:layout_height="232dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="138dp"
+        android:layout_marginEnd="47dp"
         android:text="Congrats! Your Order Is Complete. Please Pick Up Your Order In 25 Minutes"
         android:textAlignment="center"
         android:textColor="#64FFDA"
         android:textSize="36sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="159dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="159dp"
+        android:backgroundTint="#64FFDA"
+        android:onClick="onDoneClicked"
+        android:text="Button"
+        app:iconTint="#64FFDA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pickUpDescription" />
 </androidx.constraintlayout.widget.ConstraintLayout>

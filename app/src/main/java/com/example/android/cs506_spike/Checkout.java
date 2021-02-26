@@ -3,6 +3,7 @@ package com.example.android.cs506_spike;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.pdf.PdfDocument;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
@@ -37,6 +38,8 @@ public class Checkout extends AppCompatActivity {
     }
 
     public void onCheckoutClicked(View view) {
+        PdfDocument document = new PdfDocument();
+//        document.writeTo(getOutputStream())
         Intent intent = new Intent(this, PickupTime.class);
         startActivity(intent);
     }

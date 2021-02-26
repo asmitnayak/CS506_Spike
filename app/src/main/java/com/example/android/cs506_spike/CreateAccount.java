@@ -3,6 +3,7 @@ package com.example.android.cs506_spike;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.IpSecManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -172,8 +173,7 @@ public class CreateAccount extends AppCompatActivity {
                 if (pieces[0].equals(mUser)) {
                     // Account exists, return true if the password matches.
                     if (pieces[1].equals(mPassword))
-                        for(int i = 0; i < 5; i++)
-                            accountDetails[i] = pieces[i];
+                        System.arraycopy(pieces, 0, accountDetails, 0, 5);
                     return  pieces[1].equals(mPassword);
                 }
             }
@@ -238,6 +238,8 @@ public class CreateAccount extends AppCompatActivity {
                 stream.write((str + "\n").getBytes());
                 success = true;
                 CREDENTIALS.add(str);
+                String[] pieces = str.split(":");
+                System.arraycopy(pieces, 0, accountDetails, 0, 5);
             } catch(Exception e){
                 success = false;
             } finally {

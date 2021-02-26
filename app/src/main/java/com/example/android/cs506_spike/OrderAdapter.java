@@ -18,10 +18,9 @@ import java.util.ArrayList;
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder>{
 
     ArrayList<RestaurantOrder> ordersData;
-    Context context;
+    //Context context;
 
-    public OrderAdapter(Context ct, ArrayList<RestaurantOrder> orders){
-        context = ct;
+    public OrderAdapter( ArrayList<RestaurantOrder> orders){
         ordersData = orders;
 
     }
@@ -29,8 +28,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     @NonNull
     @Override
     public OrderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.orders_recycle_view_layout, parent,  false);
+        //LayoutInflater inflater = LayoutInflater.from(context);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.orders_recycle_view_layout, parent,  false);
         return new OrderViewHolder(view);
     }
 
@@ -63,6 +62,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
+            //typecast
             orderNumTitle = itemView.findViewById(R.id.Order_Num_Title);
             orderNum = itemView.findViewById(R.id.Order_Num);
             deliveryTitle = itemView.findViewById(R.id.Deliver_Type_Title);
@@ -81,7 +81,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     public void removeOrder(int position){
         ordersData.remove(position);
 
-        //this will update recyclerview means refresh it
+        //this will update recyclerview and refresh it
         notifyItemRemoved(position);
     }
 

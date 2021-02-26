@@ -30,18 +30,25 @@ public class Orders extends AppCompatActivity implements CallBackOrderTouch{
 
         layout = findViewById(R.id.RLM);
         ordersList = (RecyclerView) findViewById(R.id.ordersList);
-        ArrayList<RestaurantOrder> pastaOrder = new ArrayList<RestaurantOrder>();
-        ArrayList<RestaurantMenuItem> orderItems = new ArrayList<RestaurantMenuItem>();
-        orderItems.add(new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9));
-        pastaOrder.add(new RestaurantOrder(1, "Dine In", orderItems, 19.99));
-        pastaOrder.add(new RestaurantOrder(2, "Take Out", orderItems, 8.99));
-        orderAdp = new OrderAdapter(this, pastaOrder);
-        ordersList.setAdapter(orderAdp);
-        ordersList.setLayoutManager(new LinearLayoutManager(this));
-        ItemTouchHelper.Callback callback = new orderItemTouchHelperCallBack(this);
-        ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
-        touchHelper.attachToRecyclerView(ordersList);
+        initOrders();
+
     }
+
+        private void initOrders() {
+            ArrayList<RestaurantMenuItem> orderItems = new ArrayList<RestaurantMenuItem>();
+            orderItems.add(new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9));
+            orders.add(new RestaurantOrder(1, "Dine In", orderItems, 19.99));
+            orders.add(new RestaurantOrder(2, "Take Out", orderItems, 8.99));
+
+            //setup recycler view
+            ordersList.setLayoutManager(new LinearLayoutManager(this));
+            orderAdp = new OrderAdapter(orders);
+            ordersList.setAdapter(orderAdp);
+            ItemTouchHelper.Callback callback = new orderItemTouchHelperCallBack(this);
+            ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+            touchHelper.attachToRecyclerView(ordersList);
+        }
+
 
 
     @Override
@@ -72,4 +79,6 @@ public class Orders extends AppCompatActivity implements CallBackOrderTouch{
         snackbar.setActionTextColor(Color.GREEN);
         snackbar.show();
     }
+
+
 }

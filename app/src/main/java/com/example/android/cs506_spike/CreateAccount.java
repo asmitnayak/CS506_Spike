@@ -109,8 +109,8 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     public void goToStaff(){
-        //Intent intent = new Intent(this, CustomerView.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, RestaurantStaff.class);
+        startActivity(intent);
     }
 
     public void goToAdmin(){

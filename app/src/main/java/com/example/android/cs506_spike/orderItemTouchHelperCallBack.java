@@ -67,12 +67,12 @@ public class orderItemTouchHelperCallBack extends ItemTouchHelper.Callback {
     @Override
     public void onChildDrawOver(@NonNull Canvas c, @NonNull RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
         //super.onChildDrawOver(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-    if(actionState!=ItemTouchHelper.ACTION_STATE_DRAG){
-        final View fgView = ((OrderAdapter.OrderViewHolder)viewHolder).viewF;
-        getDefaultUIUtil().onDrawOver(c,recyclerView,fgView, dX,dY,actionState,isCurrentlyActive);
-    }
+        if(actionState!=ItemTouchHelper.ACTION_STATE_DRAG){
+            final View fgView = ((OrderAdapter.OrderViewHolder)viewHolder).viewF;
+            getDefaultUIUtil().onDraw(c,recyclerView,fgView, dX,dY,actionState,isCurrentlyActive);
+        }
 
-
+        //swipe with smooth animations
     }
 
     @Override
@@ -80,8 +80,12 @@ public class orderItemTouchHelperCallBack extends ItemTouchHelper.Callback {
         //super.clearView(recyclerView, viewHolder);
 
         final View fgView = ((OrderAdapter.OrderViewHolder)viewHolder).viewF;
+
+        //set collor of order when we drag and leave position and want original color
         fgView.setBackgroundColor(ContextCompat.getColor(((OrderAdapter.OrderViewHolder)viewHolder).viewF.getContext(),R.color.white));
         getDefaultUIUtil().clearView(fgView);
+
+        //clear when we swipe
     }
 
     @Override

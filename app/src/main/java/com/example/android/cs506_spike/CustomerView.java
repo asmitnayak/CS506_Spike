@@ -26,14 +26,14 @@ public class CustomerView extends AppCompatActivity {
     ArrayList<RestaurantMenuItem> menuItems = new ArrayList<RestaurantMenuItem>();
     ArrayAdapter<RestaurantMenuItem> menuAdapter;
     ListView menuList;
-
+    RestaurantMenuItem [] pasta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_view);
 
         menuList = (ListView) findViewById(R.id.menuList);
-        RestaurantMenuItem [] pasta = new RestaurantMenuItem[10];
+        pasta = new RestaurantMenuItem[10];
         pasta[0] = new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9);
         pasta[1] = new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9);
         CustomAdapter customAdp = new CustomAdapter(getApplicationContext(), pasta);
@@ -47,6 +47,23 @@ public class CustomerView extends AppCompatActivity {
 //
 //        menuItems.add(pasta);
     }
+
+    public void addMenuItem(String name, int cost, int availability){
+        int i;
+        for(i = 0; i < 10; i++){
+            if(pasta[i] == null){
+                break;
+            }
+        }
+
+        if(i == 9){
+            System.out.println("The menu is full! Cannot add any more items.");
+        }
+        else{
+            pasta[i] = new RestaurantMenuItem(name, R.drawable.customer_view_background, cost, availability);
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

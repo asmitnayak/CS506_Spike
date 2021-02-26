@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import java.io.File;
 
-public class AdminAddItem extends AppCompatActivity {
+public class AdminAddItem extends CustomerView {
 
     private File master = null;
     private File mMenuList = null;
@@ -32,6 +32,20 @@ public class AdminAddItem extends AppCompatActivity {
     }
 
     public void returnToAdminPage(View view) {
+
+        EditText nameIn = findViewById(R.id.menuName);
+        String name = nameIn.getText().toString();
+
+        EditText priceIn = findViewById(R.id.menuCost);
+        String priceString = priceIn.getText().toString();
+        int price = Integer.parseInt(priceString);
+
+        EditText inStockIn = findViewById(R.id.menuAvailability);
+        String inStockString = inStockIn.getText().toString();
+        int inStock = Integer.parseInt(inStockString);
+
+        addMenuItem(name, price, inStock);
+
         Intent intent = new Intent(this, Admin.class);
         startActivity(intent);
         /*

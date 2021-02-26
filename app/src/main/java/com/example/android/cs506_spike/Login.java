@@ -30,7 +30,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void login(View view) {
-        EditText usernameIn = findViewById(R.id.usernameInput);
+        EditText usernameIn = findViewById(R.id.carDescription);
         String username = usernameIn.getText().toString();
         EditText passwordIn = findViewById(R.id.passwordInput);
         String password = passwordIn.getText().toString();

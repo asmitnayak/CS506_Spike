@@ -12,7 +12,13 @@ public class CustomerAccount extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_account);
 
-        TextView tv = (TextView) findViewById(R.id.username);
-        tv.append(" "+CreateAccount.accountDetails[0]);
+        TextView username = (TextView) findViewById(R.id.username);
+        username.append(" " + CreateAccount.accountDetails[0]);
+        TextView password = (TextView) findViewById(R.id.passwordHolder);
+        password.append(" " + CreateAccount.accountDetails[1]);
+        TextView address = (TextView) findViewById(R.id.addressHolder);
+        address.append(" " + CreateAccount.accountDetails[3]);
+        TextView phone = (TextView) findViewById(R.id.phoneHolder);
+        phone.append(" " + CreateAccount.accountDetails[4]);
     }
 }

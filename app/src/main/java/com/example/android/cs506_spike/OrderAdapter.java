@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -46,13 +48,19 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     @Override
     public int getItemCount() {
-        return ordersData.size();
+        if(ordersData==null){
+            return 0;
+        }else {
+            return ordersData.size();
+        }
     }
 
     public class OrderViewHolder extends RecyclerView.ViewHolder{
         TextView orderNumTitle, orderNum, deliveryTitle, delivery, costTitle, cost, food1, food2;
         LinearLayout ordersLayout;
         Button finishedButton;
+        RelativeLayout viewF,viewB;
+
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
             orderNumTitle = itemView.findViewById(R.id.Order_Num_Title);
@@ -65,14 +73,22 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             food1 = itemView.findViewById(R.id.Food1);
             food2 = itemView.findViewById(R.id.Food2);
             finishedButton = itemView.findViewById(R.id.Order_Done_Button);
-
+            viewF = itemView.findViewById(R.id.view_Foreground);
+            viewB = itemView.findViewById(R.id.view_background);
         }
     }
 
-    public void removeItem(int position){
+    public void removeOrder(int position){
         ordersData.remove(position);
 
         //this will update recyclerview means refresh it
         notifyItemRemoved(position);
+    }
+
+    public void restoreOrder(RestaurantOrder order, int position){
+        ordersData.add(position, order);
+
+        notifyItemInserted(position);
+
     }
 }

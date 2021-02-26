@@ -13,15 +13,15 @@
         <activity android:name=".CreateAccount"></activity>
         <activity android:name=".CustomerView" />
         <activity android:name=".Orders" android:label="Orders" android:parentActivityName=".RestaurantStaff"/>
-        <activity android:name=".RestaurantStaff" />
-
-        <activity android:name=".Admin" />
-        <activity android:name=".Login">
+        <activity android:name=".RestaurantStaff" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Admin" />
+        <activity android:name=".Login"/>
+
     </application>
 
 </manifest>

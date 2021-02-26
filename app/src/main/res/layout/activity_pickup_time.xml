@@ -6,18 +6,20 @@
     android:layout_height="match_parent"
     android:background="#B70B0202"
     android:backgroundTint="#B70B0202"
-    tools:context=".Cart">
+    tools:context=".PickupTime">
 
-    <ListView
-        android:id="@+id/orders"
-        android:layout_width="399dp"
-        android:layout_height="735dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="5dp"
+    <TextView
+        android:id="@+id/pickUpDescription"
+        android:layout_width="414dp"
+        android:layout_height="193dp"
+        android:layout_marginTop="269dp"
+        android:layout_marginBottom="269dp"
+        android:text="Congrats! Your Order Is Complete. Please Pick Up Your Order In 25 Minutes"
+        android:textAlignment="center"
+        android:textColor="#64FFDA"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </ListView>
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -70,7 +70,7 @@ public class CreateAccount extends AppCompatActivity {
         master = file;
         mCreds = new File(file, "credentials");
         mAuthTask = new UserLoginTask();
-        mUsernameView = findViewById(R.id.usernameInput);
+        mUsernameView = findViewById(R.id.carDescription);
         mPasswordView = findViewById(R.id.passwordInput);
         mPasswordConfView = findViewById(R.id.passwordInputConfirm);
         mAddressView = findViewById(R.id.address);

@@ -44,4 +44,9 @@ public class RestaurantMenuItem {
     public int getItemAvailibility() {
         return itemAvailibility;
     }
+    @Override
+    public String toString(){
+        String menuItemDescription = this.itemName + "\nPrice" + this.itemCost + "\nAvailable" + this.itemAvailibility;
+        return menuItemDescription;
+    }
 }

@@ -21,6 +21,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     public OrderAdapter(Context ct, ArrayList<RestaurantOrder> orders){
         context = ct;
         ordersData = orders;
+
     }
 
     @NonNull
@@ -66,5 +67,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             finishedButton = itemView.findViewById(R.id.Order_Done_Button);
 
         }
+    }
+
+    public void removeItem(int position){
+        ordersData.remove(position);
+
+        //this will update recyclerview means refresh it
+        notifyItemRemoved(position);
     }
 }

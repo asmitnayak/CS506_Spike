@@ -12,8 +12,7 @@
         android:id="@+id/orders"
         android:layout_width="399dp"
         android:layout_height="735dp"
-        tools:layout_editor_absoluteX="7dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteX="8dp">
 
     </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>

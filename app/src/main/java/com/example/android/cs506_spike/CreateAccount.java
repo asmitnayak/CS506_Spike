@@ -3,6 +3,7 @@ package com.example.android.cs506_spike;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.IpSecManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -35,7 +36,7 @@ public class CreateAccount extends AppCompatActivity {
     private Spinner mRoleSpinner;
     private UserLoginTask mAuthTask;
 
-    public static String[] accountDetails;
+    public static String[] accountDetails = new String[5];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class CreateAccount extends AppCompatActivity {
         master = file;
         mCreds = new File(file, "credentials");
         mAuthTask = new UserLoginTask();
-        mUsernameView = findViewById(R.id.usernameInput);
+        mUsernameView = findViewById(R.id.carDescription);
         mPasswordView = findViewById(R.id.passwordInput);
         mPasswordConfView = findViewById(R.id.passwordInputConfirm);
         mAddressView = findViewById(R.id.address);
@@ -172,7 +173,7 @@ public class CreateAccount extends AppCompatActivity {
                 if (pieces[0].equals(mUser)) {
                     // Account exists, return true if the password matches.
                     if (pieces[1].equals(mPassword))
-                        accountDetails = pieces;
+                        System.arraycopy(pieces, 0, accountDetails, 0, 5);
                     return  pieces[1].equals(mPassword);
                 }
             }
@@ -237,6 +238,8 @@ public class CreateAccount extends AppCompatActivity {
                 stream.write((str + "\n").getBytes());
                 success = true;
                 CREDENTIALS.add(str);
+                String[] pieces = str.split(":");
+                System.arraycopy(pieces, 0, accountDetails, 0, 5);
             } catch(Exception e){
                 success = false;
             } finally {

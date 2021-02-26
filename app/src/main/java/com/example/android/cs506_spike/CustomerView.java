@@ -48,21 +48,7 @@ public class CustomerView extends AppCompatActivity {
 //        menuItems.add(pasta);
     }
 
-    public void addMenuItem(String name, int cost, int availability){
-        int i;
-        for(i = 0; i < 10; i++){
-            if(pasta[i] == null){
-                break;
-            }
-        }
 
-        if(i == 9){
-            System.out.println("The menu is full! Cannot add any more items.");
-        }
-        else{
-            pasta[i] = new RestaurantMenuItem(name, R.drawable.customer_view_background, cost, availability);
-        }
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

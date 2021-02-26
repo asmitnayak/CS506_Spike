@@ -85,6 +85,12 @@ public class CreateAccount extends AppCompatActivity {
                         if (mRoleSpinner.getSelectedItem().toString().equalsIgnoreCase("Customer")){
                             goToCustomer();
                         }
+                        else if (mRoleSpinner.getSelectedItem().toString().equalsIgnoreCase("Staff")){
+                            goToStaff();
+                        }
+                        else if (mRoleSpinner.getSelectedItem().toString().equalsIgnoreCase("Admin")){
+                            goToAdmin();
+                        }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -96,6 +102,16 @@ public class CreateAccount extends AppCompatActivity {
 
     public void goToCustomer(){
         Intent intent = new Intent(this, CustomerView.class);
+        startActivity(intent);
+    }
+
+    public void goToStaff(){
+        //Intent intent = new Intent(this, CustomerView.class);
+        //startActivity(intent);
+    }
+
+    public void goToAdmin(){
+        Intent intent = new Intent(this, Admin.class);
         startActivity(intent);
     }
 

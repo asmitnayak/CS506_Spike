@@ -47,8 +47,15 @@ public class Login extends AppCompatActivity {
         System.out.println("here");
         if (auth.doInBackground()){
             // login based on role
-            if(mRole.equalsIgnoreCase("Customer"))
+            if(mRole.equalsIgnoreCase("Customer")) {
                 goToCustomerView(username);
+            }
+            else if (mRole.equalsIgnoreCase("Staff")){
+                goToStaffView(username);
+            }
+            else if (mRole.equalsIgnoreCase("Admin")){
+                goToAdminView(username);
+            }
         }
 
     }
@@ -56,6 +63,18 @@ public class Login extends AppCompatActivity {
     public void goToCustomerView(String username) {
         // Redirect the user to main screen.
         Intent intent = new Intent(this, CustomerView.class);
+        startActivity(intent);
+    }
+
+    public void goToStaffView(String username) {
+        // Redirect the user to main screen.
+        //Intent intent = new Intent(this, StaffView.class);
+        //startActivity(intent);
+    }
+
+    public void goToAdminView(String username) {
+        // Redirect the user to main screen.
+        Intent intent = new Intent(this, Admin.class);
         startActivity(intent);
     }
     public void goToCreateAccount(View view) {

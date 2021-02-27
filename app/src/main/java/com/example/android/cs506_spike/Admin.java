@@ -8,6 +8,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.io.File;
+import java.io.IOException;
+
+import static com.example.android.cs506_spike.AdminModifyMenuList.foodItems;
+
 public class Admin extends AppCompatActivity {
 
     @Override
@@ -38,5 +43,22 @@ public class Admin extends AppCompatActivity {
     public void goToAccount(){
         Intent intent = new Intent(this, CustomerAccount.class);
         startActivity(intent);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        // TODO: Update Menu
+        File folder = getFilesDir();
+        File file = new File(folder, "cs506_spike");
+        Menu m = new Menu(file);
+
+        for(RestaurantMenuItem rmi: foodItems){
+            try {
+                m.write_menu(rmi.getItemName(), rmi.getMenuImage(), rmi.getItemCost(), rmi.getItemAvailibility());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

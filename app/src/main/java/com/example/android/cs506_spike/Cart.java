@@ -89,8 +89,8 @@ public class Cart extends AppCompatActivity {
         startActivity(intent);
     }
     public void pdfCreator(String data) {
-        String storageDirectory = Environment.getExternalStorageDirectory().toString();
-        File fol = new File(storageDirectory, "cs506_spike");
+        File fol = getFilesDir();
+//        File fol = new File(storageDirectory, "cs506_spike");
         folder = new File(fol, "cs506_spike");
         if (!folder.exists()) {
             boolean bool = folder.mkdir();
@@ -121,6 +121,10 @@ public class Cart extends AppCompatActivity {
     }
     public void goToCheckout(){
         pdfCreator(ordersList.toString());
+        Intent intent = new Intent(this, Checkout.class);
+        startActivity(intent);
+    }
+    public void onCartCheckout(View view) {
         Intent intent = new Intent(this, Checkout.class);
         startActivity(intent);
     }

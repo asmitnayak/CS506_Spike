@@ -17,6 +17,7 @@ public class PickupTime extends AppCompatActivity {
 
     public void onDoneClicked(View view) {
         Intent intent = new Intent(this, CustomerView.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 }

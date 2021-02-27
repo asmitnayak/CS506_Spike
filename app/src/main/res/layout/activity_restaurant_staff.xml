@@ -31,6 +31,7 @@
         android:layout_marginStart="20dp"
         android:backgroundTint="@color/teal_200"
         android:backgroundTintMode="src_over"
+        android:onClick="goToStaffMenu"
         android:text="Manage Menu"
         android:textSize="30sp"
         android:textStyle="bold"

@@ -121,9 +121,8 @@ public class Checkout extends AppCompatActivity {
             }
         }
 
-
+        //createOrder();
         Intent intent = new Intent(this, PickupTime.class);
-        createOrder();
         startActivity(intent);
 
 

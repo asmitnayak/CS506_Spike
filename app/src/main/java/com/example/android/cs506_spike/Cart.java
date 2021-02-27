@@ -19,6 +19,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 
+
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -78,7 +80,7 @@ public class Cart extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.back) {
             goToMenu();
-        }else if(item.getItemId() == R.id.checkout){
+        } else if(item.getItemId() == R.id.checkout){
             goToCheckout();
         }
 
@@ -89,9 +91,10 @@ public class Cart extends AppCompatActivity {
         startActivity(intent);
     }
     public void pdfCreator(String data) {
-        String storageDirectory = Environment.getExternalStorageDirectory().toString();
-        File fol = new File(storageDirectory, "cs506_spike");
-        folder = new File(fol, "cs506_spike");
+        //String storageDirectory = Environment.getExternalStorageDirectory().toString();
+        File storageDirectory = getFilesDir();
+//        File fol = new File(storageDirectory, "cs506_spike");
+        folder = new File(storageDirectory, "cs506_spike");
         if (!folder.exists()) {
             boolean bool = folder.mkdir();
         }
@@ -103,12 +106,17 @@ public class Cart extends AppCompatActivity {
 
             PdfDocument document = new PdfDocument();
             PdfDocument.PageInfo pageInfo = new
-                    PdfDocument.PageInfo.Builder(100, 100, 1).create();
+                    PdfDocument.PageInfo.Builder(200, 200, 1).create();
             PdfDocument.Page page = document.startPage(pageInfo);
             Canvas canvas = page.getCanvas();
             Paint paint = new Paint();
+            paint.setStrokeWidth(1f);
 
-            canvas.drawText(data, 10, 10, paint);
+            int x = 10, y = 10;
+            for (String line: data.split("\n")) {
+                canvas.drawText(line, x, y, paint);
+                y += paint.descent() - paint.ascent();
+            }
 
 
             document.finishPage(page);
@@ -120,8 +128,27 @@ public class Cart extends AppCompatActivity {
         }
     }
     public void goToCheckout(){
-        pdfCreator(ordersList.toString());
+        String str = "";
+        Double total = 0.0;
+        for (RestaurantMenuItem m : CustomAdapter.selectedFood){
+            if(m.getItemChoosen() > 1){
+                for(int i = 1; i <= m.getItemChoosen(); i++){
+                    str += m.getItemName() + " $" + m.getItemCost() + "\n";
+                    total+= m.getItemCost();
+                }
+            }else {
+                str += m.getItemName() + " $" + m.getItemCost() + "\n";
+                total+= m.getItemCost();
+            }
+
+        }
+        str += "Total: " + total + "\n\n";
+        pdfCreator(str);
         Intent intent = new Intent(this, Checkout.class);
         startActivity(intent);
+    }
+
+    public void onCheckoutClicked(View view) {
+        goToCheckout();
     }
 }

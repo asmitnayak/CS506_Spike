@@ -13,6 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:backgroundTint="#64FFDA"
+        android:onClick="onCheckoutClicked"
         android:text="Checkout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,7 +24,8 @@
         android:id="@+id/orders"
         android:layout_width="399dp"
         android:layout_height="735dp"
-        tools:layout_editor_absoluteX="8dp">
+        tools:layout_editor_absoluteX="-4dp"
+        tools:layout_editor_absoluteY="-2dp">
 
     </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>

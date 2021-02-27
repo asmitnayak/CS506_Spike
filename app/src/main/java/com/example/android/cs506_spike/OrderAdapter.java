@@ -18,9 +18,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
 
 
-
     private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
-    private ArrayList<RestaurantOrder> ordersData;
+    ArrayList<RestaurantOrder> ordersData;
 
     public OrderAdapter( ArrayList<RestaurantOrder> orders){
         ordersData = orders;
@@ -39,7 +38,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         RestaurantOrder order = ordersData.get(position);
         holder.orderNum.setText("Order Number: " + Integer.toString(ordersData.get(position).getOrderNumber()));
-        holder.delivery.setText("Delivery: " + ordersData.get(position).getDeliveryType());
         holder.cost.setText("Total Cost: $" + Double.toString(ordersData.get(position).getCost()));
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(
@@ -66,7 +64,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     }
 
     public class OrderViewHolder extends RecyclerView.ViewHolder{
-        TextView orderNum, delivery, cost;
+        TextView orderNum, cost;
         LinearLayout ordersLayout;
         RelativeLayout viewF,viewB;
         RecyclerView foodItemRecyclerView;
@@ -75,7 +73,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             super(itemView);
             //typecast
             orderNum = itemView.findViewById(R.id.Order_Num);
-            delivery = itemView.findViewById(R.id.Deliver_Type);
             cost = itemView.findViewById(R.id.Cost);
             ordersLayout = itemView.findViewById(R.id.Food_Items);
             viewF = itemView.findViewById(R.id.view_Foreground);

@@ -56,26 +56,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/Deliver_Type"
-                    android:layout_width="200dp"
-                    android:layout_height="wrap_content"
-                    android:text="Delivery: "
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.019"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Order_Num" />
-
                 <LinearLayout
                     android:id="@+id/Food_Items"
                     android:layout_width="277dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.035"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/Deliver_Type">
+                    app:layout_constraintTop_toBottomOf="@+id/Order_Num">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/Food_Item_Recycler_View"

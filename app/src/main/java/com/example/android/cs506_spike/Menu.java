@@ -53,7 +53,7 @@ public class Menu extends AsyncTask<Void, Void, Boolean> {
     public boolean write_menu(String name, int pic, double cost, int avail) throws IOException {
         boolean success;
 
-        FileOutputStream stream = new FileOutputStream(mMenu, false);
+        FileOutputStream stream = new FileOutputStream(mMenu, true);
         String str = name + ":" + pic + ":" + cost + ":" + avail;
         if (str.equals(":::"))
             return false;

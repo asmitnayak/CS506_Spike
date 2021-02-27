@@ -115,6 +115,10 @@ public class Admin extends AppCompatActivity {
         File folder = getFilesDir();
         File file = new File(folder, "cs506_spike");
         Menu m = new Menu(file);
+        File toDel = new File(file, "menu");
+
+        if(toDel.exists())
+            toDel.delete();
 
         for(RestaurantMenuItem rmi: foodItems){
             try {

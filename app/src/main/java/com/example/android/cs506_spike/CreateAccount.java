@@ -84,6 +84,7 @@ public class CreateAccount extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     if (mAuthTask.write_credentials())
+                        finish();
                         // TODO: go to login this line is error generating
                         if (mRoleSpinner.getSelectedItem().toString().equalsIgnoreCase("Customer")){
                             goToCustomer();

@@ -26,6 +26,14 @@ public class Admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        File folder = getFilesDir();
+        File file = new File(folder, "cs506_spike");
+        Menu m = new Menu(file);
+        try {
+            foodItems = m.read_menu();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void adminAddItem(View view) {
@@ -103,7 +111,6 @@ public class Admin extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         // TODO: Update Menu
         File folder = getFilesDir();
         File file = new File(folder, "cs506_spike");
@@ -116,5 +123,6 @@ public class Admin extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        super.onBackPressed();
     }
 }

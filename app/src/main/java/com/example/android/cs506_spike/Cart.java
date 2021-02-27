@@ -42,20 +42,20 @@ public class Cart extends AppCompatActivity {
         ordersList = (ListView) findViewById(R.id.orders);
         customAdp = new CustomAdapter(getApplicationContext(), CustomAdapter.selectedFood);
         ordersList.setAdapter(customAdp);
-        Button checkoutB = (Button) findViewById(R.id.checkoutButton);
-        checkoutB.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                int c = 0;
-                for(RestaurantMenuItem rmi : CustomAdapter.selectedFood){
-                    double price = rmi.getItemCost();
-                    int quant = rmi.getItemChoosen();
-                    c += price*quant;
-                }
-                cost = c;
-            }
-
-        });
+//        Button checkoutB = (Button) findViewById(R.id.checkoutButton);
+//        checkoutB.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View v) {
+//                int c = 0;
+//                for(RestaurantMenuItem rmi : CustomAdapter.selectedFood){
+//                    double price = rmi.getItemCost();
+//                    int quant = rmi.getItemChoosen();
+//                    c += price*quant;
+//                }
+//                cost = c;
+//            }
+//
+//        });
     }
 //
 //    public void saveOrders(String data, Context context){
@@ -147,7 +147,7 @@ public class Cart extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onCheckoutClicked(View view) {
+    public void onCheckout(View view) {
         goToCheckout();
     }
 }

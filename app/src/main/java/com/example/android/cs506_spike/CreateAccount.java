@@ -36,7 +36,7 @@ public class CreateAccount extends AppCompatActivity {
     private Spinner mRoleSpinner;
     private UserLoginTask mAuthTask;
 
-    public static String[] accountDetails = new String[5];
+    public static String[] accountDetails = new String[6];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +84,7 @@ public class CreateAccount extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     if (mAuthTask.write_credentials())
+                        finish();
                         // TODO: go to login this line is error generating
                         if (mRoleSpinner.getSelectedItem().toString().equalsIgnoreCase("Customer")){
                             goToCustomer();
@@ -173,7 +174,7 @@ public class CreateAccount extends AppCompatActivity {
                 if (pieces[0].equals(mUser)) {
                     // Account exists, return true if the password matches.
                     if (pieces[1].equals(mPassword))
-                        System.arraycopy(pieces, 0, accountDetails, 0, 5);
+                        System.arraycopy(pieces, 0, accountDetails, 0, 6);
                     return  pieces[1].equals(mPassword);
                 }
             }
@@ -231,15 +232,15 @@ public class CreateAccount extends AppCompatActivity {
             FileOutputStream stream = new FileOutputStream(mCreds, true);
             String str = mUsernameView.getText().toString().trim() + ":" + mPasswordView.getText().toString().trim() +
                     ":" + mRoleSpinner.getSelectedItem().toString() + ":" + mAddressView.getText().toString().trim()
-                    + ":" + mPhoneNumberView.getText().toString().trim();
-            if(str.equals("::"))
+                    + ":" + mPhoneNumberView.getText().toString().trim() + ":" + "N/A";
+            if(str.equals(":::::"))
                 return false;
             try {
                 stream.write((str + "\n").getBytes());
                 success = true;
                 CREDENTIALS.add(str);
                 String[] pieces = str.split(":");
-                System.arraycopy(pieces, 0, accountDetails, 0, 5);
+                System.arraycopy(pieces, 0, accountDetails, 0, 6);
             } catch(Exception e){
                 success = false;
             } finally {

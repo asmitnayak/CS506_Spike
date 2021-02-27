@@ -49,7 +49,7 @@ public class CustomerView extends AppCompatActivity {
 
         if (!mMenu.exists()) {
                 try (FileOutputStream stream = new FileOutputStream(mMenu, false)) {
-                    String tempMenu = "Pasta:drawable/customer_view_background:19.85:9";
+                    String tempMenu = "Pasta:0:19.85:9";
                     stream.write((tempMenu + "\n").getBytes());
                 } catch (Exception ignored) {
                 }
@@ -151,4 +151,8 @@ public class CustomerView extends AppCompatActivity {
         startActivity(intent);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

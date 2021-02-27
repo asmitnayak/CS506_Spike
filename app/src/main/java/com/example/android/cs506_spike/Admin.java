@@ -11,10 +11,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-
+import java.util.ArrayList;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static com.example.android.cs506_spike.AdminModifyMenuList.foodItems;
 
@@ -25,6 +26,14 @@ public class Admin extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
+        File folder = getFilesDir();
+        File file = new File(folder, "cs506_spike");
+        Menu m = new Menu(file);
+        try {
+            foodItems = m.read_menu();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void adminAddItem(View view) {
@@ -37,18 +46,15 @@ public class Admin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void printUsageReport(View view){
-        // print the usage report and put it into a pdf with all the necessary information
 
-    }
-    public void pdfCreator(String data) {
+    public void producePdf(String data){
         File storageDirectory = getFilesDir();
         folder = new File(storageDirectory, "cs506_spike");
         if (!folder.exists()) {
             boolean bool = folder.mkdir();
         }
         try {
-            final File file = new File(folder, "order_receipt.pdf");
+            final File file = new File(folder, "usage_report.pdf");
             file.createNewFile();
             FileOutputStream fOut = new FileOutputStream(file);
 
@@ -76,6 +82,22 @@ public class Admin extends AppCompatActivity {
             Log.i("error", e.getLocalizedMessage());
         }
     }
+
+    public void printUsageReport(View view) {
+        System.out.println(foodItems);
+
+        ArrayList<RestaurantMenuItem> items = foodItems;
+
+        String str = "";
+        for(int i = 0; i < foodItems.size(); i++){
+            str += foodItems.get(i).getItemName() + " ";
+            str += "$" +(foodItems.get(i).getItemCost()) + " ";
+            str += "Availability : " + foodItems.get(i).getItemAvailibility() + "\n";
+            System.out.println(str);
+        }
+
+        producePdf(str);
+    }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         goToAccount();
@@ -89,11 +111,14 @@ public class Admin extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-        // TODO: Update Menu
+        
         File folder = getFilesDir();
         File file = new File(folder, "cs506_spike");
         Menu m = new Menu(file);
+        File toDel = new File(file, "menu");
+
+        if(toDel.exists())
+            toDel.delete();
 
         for(RestaurantMenuItem rmi: foodItems){
             try {
@@ -102,5 +127,6 @@ public class Admin extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+        super.onBackPressed();
     }
 }

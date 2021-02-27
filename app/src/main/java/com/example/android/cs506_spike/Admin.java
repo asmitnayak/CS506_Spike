@@ -31,7 +31,9 @@ public class Admin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void usageReports(View view){
+    public void printUsageReport(View view){
+        // print the usage report and put it into a pdf with all the necessary information
+
     }
 
     @Override

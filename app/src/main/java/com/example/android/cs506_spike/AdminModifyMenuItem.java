@@ -32,16 +32,23 @@ public class AdminModifyMenuItem extends AdminModifyMenuList {
         String costString = costIn.getText().toString();
         int cost =  Integer.parseInt(costString);
 
-        EditText itemAvailabilityIn = findViewById(R.id.itemAvailability);
-        String itemAvailabilityString = itemAvailabilityIn.getText().toString();
-        int itemAvailability = Integer.parseInt(itemAvailabilityString);
+        EditText availabilityIn = findViewById(R.id.itemAvailability);
+        String availabilityString = availabilityIn.getText().toString();
+        int availability = Integer.parseInt(availabilityString);
 
+        RestaurantMenuItem addItem = new RestaurantMenuItem(username, 0, cost, availability);
 
+        ArrayList<RestaurantMenuItem> selectedFoodItem = CustomAdapter.selectedFood;
+
+        int i = foodItems.indexOf(selectedFoodItem.get(0));
+        foodItems.set(i, addItem);
 
         Intent intent = new Intent(this, AdminModifyMenuList.class);
         startActivity(intent);
 
 
     }
+
+
 
 }

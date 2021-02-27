@@ -9,14 +9,18 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHolder>{
 
-    ArrayList<RestaurantOrder> ordersData;
-    //Context context;
+
+
+
+    private RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
+    private ArrayList<RestaurantOrder> ordersData;
 
     public OrderAdapter( ArrayList<RestaurantOrder> orders){
         ordersData = orders;
@@ -33,11 +37,23 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
 
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
+        RestaurantOrder order = ordersData.get(position);
         holder.orderNum.setText("Order Number: " + Integer.toString(ordersData.get(position).getOrderNumber()));
         holder.delivery.setText("Delivery: " + ordersData.get(position).getDeliveryType());
-        holder.cost.setText("Total Cost: " + Double.toString(ordersData.get(position).getCost()));
-        holder.food1.setText("Food1");
-        holder.food2.setText("Food2");
+        holder.cost.setText("Total Cost: $" + Double.toString(ordersData.get(position).getCost()));
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(
+                holder.foodItemRecyclerView.getContext(),
+                LinearLayoutManager.VERTICAL,
+                false
+        );
+        layoutManager.setInitialPrefetchItemCount(order.getMenuItems().size());
+
+        OrdersSubItemAdapter ordersSubItemAdapter = new OrdersSubItemAdapter(order.getMenuItems());
+
+        holder.foodItemRecyclerView.setLayoutManager(layoutManager);
+        holder.foodItemRecyclerView.setAdapter(ordersSubItemAdapter);
+        holder.foodItemRecyclerView.setRecycledViewPool(viewPool);
     }
 
     @Override
@@ -50,9 +66,10 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
     }
 
     public class OrderViewHolder extends RecyclerView.ViewHolder{
-        TextView orderNum, delivery, cost, food1, food2;
+        TextView orderNum, delivery, cost;
         LinearLayout ordersLayout;
         RelativeLayout viewF,viewB;
+        RecyclerView foodItemRecyclerView;
 
         public OrderViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,10 +78,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.OrderViewHol
             delivery = itemView.findViewById(R.id.Deliver_Type);
             cost = itemView.findViewById(R.id.Cost);
             ordersLayout = itemView.findViewById(R.id.Food_Items);
-            food1 = itemView.findViewById(R.id.Food1);
-            food2 = itemView.findViewById(R.id.Food2);
             viewF = itemView.findViewById(R.id.view_Foreground);
             viewB = itemView.findViewById(R.id.view_background);
+            foodItemRecyclerView = itemView.findViewById(R.id.Food_Item_Recycler_View);
         }
     }
 

@@ -8,23 +8,12 @@
     tools:context=".AdminModifyMenuList" >
 
     <Button
-        android:id="@+id/toCartButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:onClick="goToMenuItem"
-        android:text="Modify"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/menuList"
-        app:layout_constraintStart_toStartOf="@+id/menuList" />
-
-    <Button
         android:id="@+id/changeAvail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/teal_700"
-        android:onClick="returntoAdmin"
-        android:text="Return to Admin"
+        android:onClick="changeAvailability"
+        android:text="Change Availability"
         android:textAllCaps="false"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"

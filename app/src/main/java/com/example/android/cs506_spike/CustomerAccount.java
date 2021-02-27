@@ -20,5 +20,7 @@ public class CustomerAccount extends AppCompatActivity {
         address.append(" " + CreateAccount.accountDetails[3]);
         TextView phone = (TextView) findViewById(R.id.phoneHolder);
         phone.append(" " + CreateAccount.accountDetails[4]);
+        TextView paym = (TextView) findViewById(R.id.paymentTyple);
+        paym.append(" " + CreateAccount.accountDetails[5]);
     }
 }

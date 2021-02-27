@@ -19,4 +19,8 @@ public class RestaurantStaff extends AppCompatActivity {
         Intent intent = new Intent(this, Orders.class);
         startActivity(intent);
     }
+    public void goToStaffMenu(View view){
+        Intent intent = new Intent(this, StaffMenu.class);
+        startActivity(intent);
+    }
 }

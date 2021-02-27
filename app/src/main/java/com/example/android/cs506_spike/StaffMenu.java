@@ -1,23 +1,12 @@
 package com.example.android.cs506_spike;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import android.os.Bundle;
-import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -26,16 +15,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AdminModifyMenuList extends AppCompatActivity {
+public class StaffMenu extends AppCompatActivity {
     ArrayList<RestaurantMenuItem> menuItems = new ArrayList<RestaurantMenuItem>();
     ArrayAdapter<RestaurantMenuItem> menuAdapter;
-    CustomAdapter customAdp;
+    CustomAdapter customAdpStaff;
     ListView menuList;
     public static ArrayList<RestaurantMenuItem> foodItems = new ArrayList<RestaurantMenuItem>();
     public static boolean first = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_menu_view);
+        setContentView(R.layout.activity_staff_menu);
         menuList = (ListView) findViewById(R.id.menuList);
 
         final File folder = getFilesDir();
@@ -47,7 +36,7 @@ public class AdminModifyMenuList extends AppCompatActivity {
         System.out.println("2Size : " + foodItems.size());
         if (!mMenu.exists()) {
             try (FileOutputStream stream = new FileOutputStream(mMenu, false)) {
-                String tempMenu = "Pasta:0:19.85:9";
+                String tempMenu = "Pasta:drawable/customer_view_background:19.85:9";
                 stream.write((tempMenu + "\n").getBytes());
             } catch (Exception ignored) {
             }
@@ -72,42 +61,23 @@ public class AdminModifyMenuList extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-//        if(first == false) {
-//            String contents = new String(bytes);
-//            String array[] = contents.split("\n");
-//            for (String s : array) {
-//                String[] pieces = s.split(":");
-//                foodItems.add(new RestaurantMenuItem(pieces[0], getResources().getIdentifier(pieces[1], null, getPackageName()), Double.parseDouble(pieces[2]), Integer.parseInt(pieces[3])));
-//            }
-//            first = true;
-//        }
-
-        customAdp = new CustomAdapter(getApplicationContext(), foodItems);
-        menuList.setAdapter(customAdp);
-    }
-    public void returntoAdmin(View view){
-        finish();
-    }
-
-    public void goToMenuItem(View view){
-        ArrayList<RestaurantMenuItem> selectedFoodItem = CustomAdapter.selectedFood;
-
-      //  EditText et = (EditText)findViewById(R.id.itemName);
-        EditText iN = (EditText)findViewById(R.id.itemName);
-        EditText c = (EditText)findViewById(R.id.itemCost);
-
-        /*
-        if (iN.getVisibility() == View.INVISIBLE){
-            iN.setVisibility(View.VISIBLE);
+        if(first == false) {
+            String contents = new String(bytes);
+            String array[] = contents.split("\n");
+            for (String s : array) {
+                String[] pieces = s.split(":");
+                foodItems.add(new RestaurantMenuItem(pieces[0], getResources().getIdentifier(pieces[1], null, getPackageName()), Double.parseDouble(pieces[2]), Integer.parseInt(pieces[3])));
+            }
+            first = true;
         }
-        if (c.getVisibility() == View.VISIBLE){
-            c.setVisibility(View.VISIBLE);
-        }
-*/
-        Intent intent = new Intent(this, AdminModifyMenuItem.class);
+
+        customAdpStaff = new CustomAdapter(getApplicationContext(), foodItems);
+        menuList.setAdapter(customAdpStaff);
+    }
+    public void changeAvailability(View view){
+        // ArrayList<RestaurantMenuItem> selectedFoodItem = CustomAdapter.selectedFood;
+        Intent intent = new Intent(this, ModifyAvailability.class);
         startActivity(intent);
     }
-
-
 
 }

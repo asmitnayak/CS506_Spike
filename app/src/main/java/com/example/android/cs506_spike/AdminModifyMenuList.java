@@ -34,7 +34,7 @@ public class AdminModifyMenuList extends AppCompatActivity {
     public static boolean first = false;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_customer_view);
+        setContentView(R.layout.activity_admin_menu_view);
         menuList = (ListView) findViewById(R.id.menuList);
 
         final File folder = getFilesDir();
@@ -89,6 +89,12 @@ public class AdminModifyMenuList extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void goToMenuItem(View view){
+
+
+        Intent intent = new Intent(this, AdminModifyMenuItem.class);
+        startActivity(intent);
+    }
 
 
 

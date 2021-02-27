@@ -34,7 +34,6 @@ public class AdminAddItem extends AdminModifyMenuList {
     public void addMenuItem(String name, int cost, int availability){
         RestaurantMenuItem addItem = new RestaurantMenuItem(name, 0, cost, availability);
         foodItems.add(addItem);
-        System.out.println("Size : " + foodItems.size());
     }
 
     public void returnToAdminPage(View view) {

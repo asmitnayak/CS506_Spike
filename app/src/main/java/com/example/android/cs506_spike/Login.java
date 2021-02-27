@@ -115,7 +115,7 @@ public class Login extends AppCompatActivity {
                 if (pieces[0].equals(mUser)) {
                     // Account exists, return true if the password matches.
                     if (pieces[1].equals(mPassword)){
-                        for(int i = 0; i < 5; i++)
+                        for(int i = 0; i < 6; i++)
                             accountDetails[i] = pieces[i];
                         mRole = pieces[2];
                         return true;

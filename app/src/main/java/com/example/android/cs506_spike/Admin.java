@@ -11,10 +11,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-
+import java.util.ArrayList;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static com.example.android.cs506_spike.AdminModifyMenuList.foodItems;
 
@@ -37,18 +38,15 @@ public class Admin extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void printUsageReport(View view){
-        // print the usage report and put it into a pdf with all the necessary information
 
-    }
-    public void pdfCreator(String data) {
+    public void producePdf(String data){
         File storageDirectory = getFilesDir();
         folder = new File(storageDirectory, "cs506_spike");
         if (!folder.exists()) {
             boolean bool = folder.mkdir();
         }
         try {
-            final File file = new File(folder, "order_receipt.pdf");
+            final File file = new File(folder, "usage_report.pdf");
             file.createNewFile();
             FileOutputStream fOut = new FileOutputStream(file);
 
@@ -75,6 +73,19 @@ public class Admin extends AppCompatActivity {
         } catch (IOException e) {
             Log.i("error", e.getLocalizedMessage());
         }
+    }
+
+    public void printUsageReport() {
+        ArrayList<RestaurantMenuItem> items = foodItems;
+
+        String str = "";
+        for(int i = 0; i < foodItems.size(); i++){
+            str += foodItems.get(i).getItemName() + " ";
+            str += "$" +(foodItems.get(i).getItemCost()) + " ";
+            str += "Availability : " + foodItems.get(i).getItemAvailibility() + "\n";
+        }
+
+        producePdf(str);
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

@@ -81,9 +81,9 @@ public class Cart extends AppCompatActivity {
         if (item.getItemId() == R.id.back) {
             goToMenu();
         }
-//        else if(item.getItemId() == R.id.checkout){
-//            goToCheckout();
-//        }
+        else if(item.getItemId() == R.id.checkout){
+            goToCheckout();
+        }
 
         return super.onOptionsItemSelected(item);
     }

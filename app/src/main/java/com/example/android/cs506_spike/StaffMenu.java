@@ -1,17 +1,11 @@
 package com.example.android.cs506_spike;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
@@ -19,13 +13,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class StaffMenu extends AppCompatActivity {
     ArrayList<RestaurantMenuItem> menuItems = new ArrayList<RestaurantMenuItem>();
     ArrayAdapter<RestaurantMenuItem> menuAdapter;
-    CustomAdapter customAdp;
+    CustomAdapter customAdpStaff;
     ListView menuList;
     public static ArrayList<RestaurantMenuItem> foodItems = new ArrayList<RestaurantMenuItem>();
     public static boolean first = false;
@@ -78,8 +71,8 @@ public class StaffMenu extends AppCompatActivity {
             first = true;
         }
 
-        customAdp = new CustomAdapter(getApplicationContext(), foodItems);
-        menuList.setAdapter(customAdp);
+        customAdpStaff = new CustomAdapter(getApplicationContext(), foodItems);
+        menuList.setAdapter(customAdpStaff);
     }
     public void changeAvailability(View view){
         // ArrayList<RestaurantMenuItem> selectedFoodItem = CustomAdapter.selectedFood;

@@ -30,7 +30,7 @@ public class  ModifyAvailability extends StaffMenu{
         int availability = Integer.parseInt(availabilityString);
         //int i = foodItems.indexOf(selectedFoodItem.get(0));
        // foodItems.set(i,)
-
+        CustomAdapter.selectedFood.get(0).setItemAvailibility(availability);
         Intent intent = new Intent(this, StaffMenu.class);
         startActivity(intent);
     }

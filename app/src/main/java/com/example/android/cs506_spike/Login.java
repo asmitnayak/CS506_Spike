@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -34,7 +35,23 @@ public class Login extends AppCompatActivity {
         String username = usernameIn.getText().toString();
         EditText passwordIn = findViewById(R.id.passwordInput);
         String password = passwordIn.getText().toString();
+        final File folder = getFilesDir();
+        File file = new File(folder, "cs506_spike");
+        if(!file.exists())
+            file.mkdir();
+        // TODO: Change filename
+        File mMenu = new File(file, "menu");
 
+        if (!mMenu.exists()) {
+            try (FileOutputStream stream = new FileOutputStream(mMenu, false)) {
+                int a = R.drawable.customer_view_background;
+                int b = R.drawable.pasta_item_image;
+                String tempMenu = "Wow Pasta:"+a+":19.85:9\n"+
+                        "Pasta:"+b+":13.85:5\n";
+                stream.write((tempMenu + "\n").getBytes());
+            } catch (Exception ignored) {
+            }
+        }
         // Check for valid input.
         if (username != null && !username.equals("") && password != null && !password.equals("")) {
             // Check if login credentials matches.

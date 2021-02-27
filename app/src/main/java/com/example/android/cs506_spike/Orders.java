@@ -35,10 +35,17 @@ public class Orders extends AppCompatActivity implements CallBackOrderTouch{
     }
 
         private void initOrders() {
-            ArrayList<RestaurantMenuItem> orderItems = new ArrayList<RestaurantMenuItem>();
-            orderItems.add(new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9));
-            orders.add(new RestaurantOrder(1, "Dine In", orderItems, 19.99));
-            orders.add(new RestaurantOrder(2, "Take Out", orderItems, 8.99));
+            ArrayList<RestaurantMenuItem> orderItem1 = new ArrayList<RestaurantMenuItem>();
+            orderItem1.add(new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9));
+            orderItem1.get(0).setQuantity(2);
+            ArrayList<RestaurantMenuItem> orderItem2 = new ArrayList<RestaurantMenuItem>();
+            orderItem2.add(new RestaurantMenuItem("Pizza", R.drawable.customer_view_background, 9.99, 9));
+            orderItem2.add(new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9));
+            orderItem2.get(0).setQuantity(3);
+            orderItem2.get(1).setQuantity(1);
+            orders.add(new RestaurantOrder(1, "Dine In", orderItem1, 39.98));
+            orders.add(new RestaurantOrder(2, "Take Out", orderItem2, 49.96));
+
 
             //setup recycler view
             ordersList.setLayoutManager(new LinearLayoutManager(this));

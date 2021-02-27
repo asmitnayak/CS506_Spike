@@ -37,7 +37,7 @@ public class Checkout extends AppCompatActivity {
         }
     }
 
-    public void onCheckoutClicked(View view) {
+    public void onCheckoutBClicked(View view) {
         Intent intent = new Intent(this, PickupTime.class);
         startActivity(intent);
     }

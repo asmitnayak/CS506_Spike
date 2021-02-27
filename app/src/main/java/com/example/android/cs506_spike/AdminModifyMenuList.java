@@ -12,6 +12,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -90,7 +91,9 @@ public class AdminModifyMenuList extends AppCompatActivity {
     }
 
     public void goToMenuItem(View view){
+        ArrayList<RestaurantMenuItem> selectedFoodItem = CustomAdapter.selectedFood;
 
+      //  EditText et = (EditText)findViewById(R.id.itemName);
 
         Intent intent = new Intent(this, AdminModifyMenuItem.class);
         startActivity(intent);

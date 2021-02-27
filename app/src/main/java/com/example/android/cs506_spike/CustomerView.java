@@ -49,7 +49,10 @@ public class CustomerView extends AppCompatActivity {
 
         if (!mMenu.exists()) {
                 try (FileOutputStream stream = new FileOutputStream(mMenu, false)) {
-                    String tempMenu = "Pasta:0:19.85:9";
+                    int a = R.drawable.customer_view_background;
+                    int b = R.drawable.pasta_item_image;
+                    String tempMenu = "Wow Pasta:"+a+":19.85:9\n"+
+                            "Pasta:"+b+":13.85:5\n";
                     stream.write((tempMenu + "\n").getBytes());
                 } catch (Exception ignored) {
                 }

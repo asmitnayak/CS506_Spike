@@ -31,6 +31,12 @@ public class AdminAddItem extends AdminModifyMenuList {
         setContentView(R.layout.activity_admin_add_item);
     }
 
+    public void addMenuItem(String name, int cost, int availability){
+        RestaurantMenuItem addItem = new RestaurantMenuItem(name, 0, cost, availability);
+        foodItems.add(addItem);
+        System.out.println("Size : " + foodItems.size());
+    }
+
     public void returnToAdminPage(View view) {
         System.out.println("/n/n running return to admin page /n");
         EditText nameIn = findViewById(R.id.menuName);

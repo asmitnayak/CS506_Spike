@@ -1,16 +1,10 @@
 package com.example.android.cs506_spike;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.widget.EditText;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 

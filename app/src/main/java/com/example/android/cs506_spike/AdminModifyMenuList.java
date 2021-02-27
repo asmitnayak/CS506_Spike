@@ -86,8 +86,7 @@ public class AdminModifyMenuList extends AppCompatActivity {
         menuList.setAdapter(customAdp);
     }
     public void returntoAdmin(View view){
-        Intent intent = new Intent(this, Admin.class);
-        startActivity(intent);
+        finish();
     }
 
     public void goToMenuItem(View view){

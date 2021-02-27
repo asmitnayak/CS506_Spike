@@ -47,7 +47,7 @@ public class AdminModifyMenuList extends AppCompatActivity {
         System.out.println("2Size : " + foodItems.size());
         if (!mMenu.exists()) {
             try (FileOutputStream stream = new FileOutputStream(mMenu, false)) {
-                String tempMenu = "Pasta:drawable/customer_view_background:19.85:9";
+                String tempMenu = "Pasta:0:19.85:9";
                 stream.write((tempMenu + "\n").getBytes());
             } catch (Exception ignored) {
             }
@@ -72,15 +72,15 @@ public class AdminModifyMenuList extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-        if(first == false) {
-            String contents = new String(bytes);
-            String array[] = contents.split("\n");
-            for (String s : array) {
-                String[] pieces = s.split(":");
-                foodItems.add(new RestaurantMenuItem(pieces[0], getResources().getIdentifier(pieces[1], null, getPackageName()), Double.parseDouble(pieces[2]), Integer.parseInt(pieces[3])));
-            }
-            first = true;
-        }
+//        if(first == false) {
+//            String contents = new String(bytes);
+//            String array[] = contents.split("\n");
+//            for (String s : array) {
+//                String[] pieces = s.split(":");
+//                foodItems.add(new RestaurantMenuItem(pieces[0], getResources().getIdentifier(pieces[1], null, getPackageName()), Double.parseDouble(pieces[2]), Integer.parseInt(pieces[3])));
+//            }
+//            first = true;
+//        }
 
         customAdp = new CustomAdapter(getApplicationContext(), foodItems);
         menuList.setAdapter(customAdp);

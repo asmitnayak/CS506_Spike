@@ -83,7 +83,9 @@ public class Admin extends AppCompatActivity {
         }
     }
 
-    public void printUsageReport() {
+    public void printUsageReport(View view) {
+        System.out.println(foodItems);
+
         ArrayList<RestaurantMenuItem> items = foodItems;
 
         String str = "";
@@ -91,6 +93,7 @@ public class Admin extends AppCompatActivity {
             str += foodItems.get(i).getItemName() + " ";
             str += "$" +(foodItems.get(i).getItemCost()) + " ";
             str += "Availability : " + foodItems.get(i).getItemAvailibility() + "\n";
+            System.out.println(str);
         }
 
         producePdf(str);

@@ -18,12 +18,12 @@ import com.google.android.material.snackbar.Snackbar;
 import java.util.ArrayList;
 
 public class Orders extends AppCompatActivity implements CallBackOrderTouch{
-    public static ArrayList<RestaurantOrder> orders = new ArrayList<RestaurantOrder>();
+    ArrayList<RestaurantOrder> orders = new ArrayList<RestaurantOrder>();
     private RecyclerView ordersList;
     private OrderAdapter orderAdp;
     RelativeLayout layout;
     public static int ordNum = 0;
-    boolean first = false;
+    boolean first = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +37,7 @@ public class Orders extends AppCompatActivity implements CallBackOrderTouch{
     }
 
     private void initOrders() {
-        if (first == false) {
+        if (first == true) {
             ArrayList<RestaurantMenuItem> orderItem1 = new ArrayList<RestaurantMenuItem>();
             orderItem1.add(new RestaurantMenuItem("Pasta", R.drawable.customer_view_background, 19.99, 9));
             orderItem1.get(0).setQuantity(2);
@@ -48,6 +48,7 @@ public class Orders extends AppCompatActivity implements CallBackOrderTouch{
             orderItem2.get(1).setQuantity(1);
             orders.add(new RestaurantOrder(1, orderItem1, 39.98));
             orders.add(new RestaurantOrder(2, orderItem2, 49.96));
+            first = false;
         }
 
 

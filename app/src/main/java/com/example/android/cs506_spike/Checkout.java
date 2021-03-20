@@ -20,18 +20,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static com.example.android.cs506_spike.CreateAccount.accountDetails;
+import static com.example.android.cs506_spike.StaffMenu.foodItems;
 
 import java.util.ArrayList;
 
 public class Checkout extends AppCompatActivity {
-    Orders restaurantOrders;
-    CustomAdapter customAdp;
+
 
     LayoutInflater inflter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_checkout);
     }
 
@@ -127,11 +128,11 @@ public class Checkout extends AppCompatActivity {
 
 
     }
-
+    /*
     public void createOrder(){
-        ArrayList<RestaurantMenuItem> customerOrder = customAdp.selectedFood;
+        ArrayList<RestaurantMenuItem> customerOrder = CustomAdapter.selectedFood;
         ArrayList<RestaurantMenuItem> newOrder = new ArrayList<RestaurantMenuItem>(customerOrder);
-        restaurantOrders.orders.add(new RestaurantOrder(restaurantOrders.ordNum++, newOrder, CalculateCost(newOrder)));
+        Orders.orders.add(new RestaurantOrder(Orders.ordNum++, newOrder, CalculateCost(newOrder)));
     }
 
     public Double CalculateCost(ArrayList<RestaurantMenuItem> orders){
@@ -141,4 +142,6 @@ public class Checkout extends AppCompatActivity {
         }
         return totalCost;
     }
+    */
+
 }
